@@ -3,8 +3,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const heartButton =
         document.getElementById("heartButton");
 
-    const bottomFlowers =
-        document.getElementById("bottomFlowers");
+    const flowers =
+        document.getElementById("flowers");
 
     const envelopeBox =
         document.getElementById("envelopeBox");
@@ -15,8 +15,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const letterOverlay =
         document.getElementById("letterOverlay");
 
-    const closeButton =
-        document.getElementById("closeButton");
+    const closeLetter =
+        document.getElementById("closeLetter");
 
     const surpriseButton =
         document.getElementById("surpriseButton");
@@ -29,132 +29,101 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =========================
-       KLIK HATI
+       1. KLIK HATI
     ========================= */
 
-    heartButton.addEventListener(
-        "click",
-        function () {
+    heartButton.addEventListener("click", function () {
 
-            /* bunga muncul */
-            bottomFlowers.classList.add(
-                "show"
-            );
+        console.log("Hati berhasil diklik");
 
+        // bunga muncul
+        flowers.classList.add("show");
 
-            /* love */
-            createHearts(20);
+        // love beterbangan
+        createHearts(25);
 
+        // hati mengecil
+        heartButton.style.transform =
+            "scale(0)";
 
-            /* hati mengecil */
-            heartButton.style.transform =
-                "scale(0)";
+        heartButton.style.opacity =
+            "0";
 
-            heartButton.style.opacity =
-                "0";
+        // amplop muncul
+        setTimeout(function () {
 
+            envelopeBox.classList.add("show");
 
-            /* amplop muncul */
-            setTimeout(
-                function () {
+        }, 1200);
 
-                    envelopeBox.classList.add(
-                        "show"
-                    );
-
-                },
-                1500
-            );
-
-        }
-    );
+    });
 
 
     /* =========================
-       KLIK AMPLOP
+       2. KLIK AMPLOP
     ========================= */
 
-    envelope.addEventListener(
-        "click",
-        function () {
+    envelope.addEventListener("click", function () {
 
-            letterOverlay.classList.add(
-                "show"
-            );
+        console.log("Amplop berhasil diklik");
 
+        letterOverlay.classList.add("show");
 
-            createHearts(25);
+        createHearts(20);
 
-        }
-    );
+    });
 
 
     /* =========================
-       KLIK KEJUTAN
+       3. TUTUP SURAT
     ========================= */
 
-    surpriseButton.addEventListener(
-        "click",
-        function () {
+    closeLetter.addEventListener("click", function () {
 
-            /* tombol hanya bisa sekali */
-            surpriseButton.disabled =
-                true;
+        letterOverlay.classList.remove("show");
 
-
-            surpriseButton.textContent =
-                "💐 Untuk Gabriela...";
-
-
-            /* buket muncul */
-            bouquet.classList.add(
-                "show"
-            );
-
-
-            /* love */
-            createHearts(40);
-
-
-            /* nama muncul */
-            setTimeout(
-                function () {
-
-                    gabriela.classList.add(
-                        "show"
-                    );
-
-                },
-                1900
-            );
-
-        }
-    );
+    });
 
 
     /* =========================
-       TUTUP SURAT
+       4. KLIK KEJUTAN
     ========================= */
 
-    closeButton.addEventListener(
-        "click",
-        function () {
+    surpriseButton.addEventListener("click", function () {
 
-            letterOverlay.classList.remove(
-                "show"
-            );
+        console.log("Kejutan berhasil diklik");
 
-        }
-    );
+        surpriseButton.disabled = true;
+
+        surpriseButton.innerHTML =
+            "💐 Untuk Gabriela...";
+
+
+        // buket muncul
+        bouquet.classList.add("show");
+
+
+        // banyak love
+        createHearts(45);
+
+
+        // nama muncul setelah bunga
+        setTimeout(function () {
+
+            gabriela.classList.add("show");
+
+        }, 1800);
+
+    });
 
 
     /* =========================
-       LOVE
+       5. LOVE
     ========================= */
 
     function createHearts(jumlah) {
 
-        const hearts = [
+        const heartTypes = [
             "❤️",
             "💕",
             "💗",
@@ -169,47 +138,41 @@ document.addEventListener("DOMContentLoaded", function () {
         ) {
 
             const heart =
-                document.createElement(
-                    "div"
-                );
+                document.createElement("div");
 
 
             heart.className =
                 "floating-heart";
 
 
-            heart.textContent =
-                hearts[
+            heart.innerHTML =
+                heartTypes[
                     Math.floor(
                         Math.random() *
-                        hearts.length
+                        heartTypes.length
                     )
                 ];
 
 
             heart.style.left =
-                Math.random() * 100 +
-                "%";
+                Math.random() * 100 + "vw";
 
 
             heart.style.bottom =
-                Math.random() * 35 +
-                "%";
+                Math.random() * 30 + "vh";
 
 
             heart.style.fontSize =
                 (
-                    16 +
+                    18 +
                     Math.random() * 25
-                ) +
-                "px";
+                ) + "px";
 
 
             heart.style.animationDelay =
                 (
-                    Math.random() * .7
-                ) +
-                "s";
+                    Math.random() * .8
+                ) + "s";
 
 
             document.body.appendChild(
@@ -217,16 +180,14 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
 
-            setTimeout(
-                function () {
+            setTimeout(function () {
 
-                    heart.remove();
+                heart.remove();
 
-                },
-                3200
-            );
+            }, 3500);
 
         }
+
     }
 
 });
