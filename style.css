@@ -1,0 +1,335 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(#08051c, #17052d, #32074b);
+    color: white;
+}
+
+/* Bintang */
+.stars {
+    position: fixed;
+    inset: 0;
+    background-image:
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(white 1px, transparent 1px);
+    background-size: 90px 90px, 140px 140px;
+    background-position: 10px 20px, 50px 70px;
+    opacity: 0.8;
+}
+
+/* Bulan */
+.moon {
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: #fff7d6;
+    box-shadow: 0 0 35px #fff7d6;
+    top: 8%;
+    right: 12%;
+}
+
+/* Tampilan utama */
+.content {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+h1 {
+    font-size: 45px;
+    margin-bottom: 10px;
+    text-shadow: 0 0 15px #ff8bd1;
+}
+
+.subtitle {
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+
+/* Amplop */
+.envelope {
+    position: relative;
+    width: 220px;
+    height: 145px;
+
+    background: #ff7dbd;
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+
+    transition: 0.4s;
+}
+
+.envelope:hover {
+    transform: translateY(-8px) scale(1.04);
+}
+
+.flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 0;
+    height: 0;
+
+    border-left: 110px solid transparent;
+    border-right: 110px solid transparent;
+    border-top: 80px solid #ffaad5;
+}
+
+.letter {
+    position: absolute;
+    z-index: 2;
+
+    width: 70px;
+    height: 70px;
+
+    left: 75px;
+    top: 38px;
+
+    background: white;
+    border-radius: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 35px;
+}
+
+.envelope p {
+    position: absolute;
+    bottom: -35px;
+    width: 100%;
+    font-size: 16px;
+}
+
+/* Bunga */
+.flowers {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 180px;
+
+    z-index: 3;
+}
+
+.flower {
+    position: absolute;
+    bottom: 15px;
+    font-size: 60px;
+
+    animation: sway 3s infinite ease-in-out;
+}
+
+.f1 {
+    left: 8%;
+}
+
+.f2 {
+    left: 25%;
+    font-size: 75px;
+}
+
+.f3 {
+    left: 48%;
+    font-size: 65px;
+}
+
+.f4 {
+    right: 25%;
+    font-size: 75px;
+}
+
+.f5 {
+    right: 7%;
+}
+
+@keyframes sway {
+    0%, 100% {
+        transform: rotate(-5deg);
+    }
+
+    50% {
+        transform: rotate(5deg);
+    }
+}
+
+/* Surat */
+.letter-box {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0,0,0,0.7);
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 20;
+
+    padding: 20px;
+}
+
+.letter-box.show {
+    display: flex;
+}
+
+.paper {
+    position: relative;
+
+    width: min(550px, 90vw);
+    max-height: 85vh;
+
+    overflow-y: auto;
+
+    background: #fff5e8;
+    color: #54253d;
+
+    padding: 40px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 0 40px rgba(255, 150, 220, 0.6);
+
+    animation: appear 0.5s ease;
+}
+
+.paper h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #d84b91;
+}
+
+.paper p {
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+.paper h3 {
+    text-align: center;
+    margin-top: 25px;
+    color: #d84b91;
+}
+
+.close {
+    position: absolute;
+
+    top: 10px;
+    right: 15px;
+
+    border: none;
+    background: none;
+
+    font-size: 30px;
+    color: #d84b91;
+
+    cursor: pointer;
+}
+
+@keyframes appear {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Tampilan HP */
+@media (max-width: 600px) {
+
+    h1 {
+        font-size: 30px;
+    }
+
+    .subtitle {
+        font-size: 15px;
+        margin-bottom: 30px;
+    }
+
+    .moon {
+        width: 80px;
+        height: 80px;
+
+        top: 7%;
+        right: 8%;
+    }
+
+    .envelope {
+        width: 190px;
+        height: 125px;
+    }
+
+    .flap {
+        border-left-width: 95px;
+        border-right-width: 95px;
+        border-top-width: 70px;
+    }
+
+    .letter {
+        width: 60px;
+        height: 60px;
+
+        left: 65px;
+        top: 32px;
+
+        font-size: 28px;
+    }
+
+    .flowers {
+        height: 120px;
+    }
+
+    .flower {
+        font-size: 40px;
+    }
+
+    .f2,
+    .f4 {
+        font-size: 50px;
+    }
+
+    .paper {
+        width: 92vw;
+        max-height: 80vh;
+
+        padding: 30px 22px;
+    }
+
+    .paper h2 {
+        font-size: 23px;
+    }
+
+    .paper p {
+        font-size: 14px;
+    }
+
+    .paper h3 {
+        font-size: 15px;
+    }
+}
