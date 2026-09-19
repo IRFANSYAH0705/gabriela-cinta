@@ -1,118 +1,622 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+
+    font-family: Arial, sans-serif;
+
+    color: white;
+
+    background:
+        radial-gradient(
+            circle at 50% 80%,
+            #28123e 0%,
+            #0b0d2b 45%,
+            #02030f 100%
+        );
+}
+
+
+/* =========================
+   LANGIT
+========================= */
+
+.sky {
+    position: fixed;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    z-index: 0;
+}
+
+
+/* BINTANG */
+
+.stars {
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        radial-gradient(
+            circle,
+            white 1px,
+            transparent 1.5px
+        ),
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1.5px
+        );
+
+    background-size:
+        75px 75px,
+        130px 130px;
+
+    background-position:
+        10px 20px,
+        50px 70px;
+
+    opacity: .8;
+}
+
+
+/* BULAN */
+
+.moon {
+    position: absolute;
+
+    width: 110px;
+    height: 110px;
+
+    right: 10%;
+    top: 9%;
+
+    border-radius: 50%;
+
+    background: #fffbdc;
+
+    box-shadow:
+        0 0 20px #fffbdc,
+        0 0 60px rgba(255,251,220,.45);
+}
+
+
+/* =========================
+   KOMET
+========================= */
+
+.comet {
+    position: absolute;
+
+    width: 140px;
+    height: 3px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.25),
+            white
+        );
+
+    transform: rotate(35deg);
+
+    opacity: 0;
+
+    z-index: 2;
+}
+
+
+/* kepala komet */
+
+.comet::after {
+    content: "";
+
+    position: absolute;
+
+    right: 0;
+    top: 50%;
+
+    width: 8px;
+    height: 8px;
+
+    transform: translateY(-50%);
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+        0 0 8px white,
+        0 0 18px white,
+        0 0 30px rgba(255,255,255,.8);
+}
+
+
+/* komet bergerak kiri atas → kanan bawah */
+
+.comet-1 {
+    left: -180px;
+    top: 12%;
+
+    animation:
+        shootingStar 5s linear infinite;
+}
+
+.comet-2 {
+    left: -180px;
+    top: 35%;
+
+    animation:
+        shootingStar 6s linear infinite;
+
+    animation-delay: 2s;
+}
+
+.comet-3 {
+    left: -180px;
+    top: 5%;
+
+    animation:
+        shootingStar 7s linear infinite;
+
+    animation-delay: 4s;
+}
+
+
+@keyframes shootingStar {
+
+    0% {
+        transform:
+            translate(-150px, -100px)
+            rotate(35deg);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    45% {
+        opacity: 1;
+    }
+
+    65% {
+        transform:
+            translate(850px, 600px)
+            rotate(35deg);
+
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
+/* =========================
+   HALAMAN DEPAN
+========================= */
+
+.home {
+    position: relative;
+
+    z-index: 10;
+
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+}
+
+
+.home h1 {
+    font-size: 50px;
+
+    margin-bottom: 12px;
+
+    text-shadow:
+        0 0 10px #ff77c8,
+        0 0 30px #ff2eaa;
+}
+
+
+.subtitle {
+    font-size: 18px;
+
+    opacity: .9;
+
+    margin-bottom: 35px;
+}
+
+
+/* HATI */
+
+.big-heart {
+    width: 110px;
+    height: 110px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.08);
+
+    font-size: 55px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 20px rgba(255,70,180,.6),
+        0 0 60px rgba(255,70,180,.2);
+
+    transition: .3s;
+}
+
+.big-heart:hover {
+    transform: scale(1.1);
+}
+
+.big-heart:active {
+    transform: scale(.9);
+}
+
+
+.instruction {
+    margin-top: 15px;
+
+    font-size: 15px;
+
+    opacity: .8;
+}
+
+
+/* =========================
+   BUNGA BAWAH
+========================= */
+
+.ground-flowers {
+    position: fixed;
+
+    z-index: 5;
+
+    left: 0;
+    bottom: -100px;
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: space-around;
+
+    font-size: 60px;
+
+    opacity: 0;
+
+    transition:
+        bottom 1s ease,
+        opacity 1s ease;
+}
+
+.ground-flowers.show {
+    bottom: 10px;
+
+    opacity: 1;
+}
+
+.ground-flowers span {
+    animation: flowerMove 3s ease-in-out infinite;
+}
+
+.ground-flowers span:nth-child(2) {
+    animation-delay: .2s;
+}
+
+.ground-flowers span:nth-child(3) {
+    animation-delay: .4s;
+}
+
+.ground-flowers span:nth-child(4) {
+    animation-delay: .6s;
+}
+
+.ground-flowers span:nth-child(5) {
+    animation-delay: .8s;
+}
+
+.ground-flowers span:nth-child(6) {
+    animation-delay: 1s;
+}
+
+@keyframes flowerMove {
+
+    0%,
+    100% {
+        transform: rotate(-5deg);
+    }
+
+    50% {
+        transform: rotate(5deg);
+    }
+}
+
+
+/* =========================
+   AMPLOP
+========================= */
+
+.envelope-section {
+    position: fixed;
+
+    z-index: 20;
+
+    left: 50%;
+    top: 52%;
+
+    transform:
+        translate(-50%, -50%)
+        scale(.5);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    text-align: center;
+
+    transition: 1s;
+}
+
+.envelope-section.show {
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+.small-title {
+    margin-bottom: 15px;
+
+    font-size: 22px;
+
+    color: #ffb6dd;
+}
+
+
+/* bentuk amplop */
+
+.envelope {
+    position: relative;
+
+    width: 250px;
+    height: 165px;
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    filter:
+        drop-shadow(
+            0 15px 25px rgba(0,0,0,.5)
+        );
+
+    transition: .3s;
+}
+
+.envelope:hover {
+    transform: scale(1.05);
+}
+
+
+/* bagian belakang */
+
+.envelope-back {
+    position: absolute;
+
+    inset: 0;
+
+    background: #e76cae;
+
+    border-radius: 7px;
+}
+
+
+/* kertas kecil */
+
+.letter-paper {
+    position: absolute;
+
+    z-index: 3;
+
+    left: 50%;
+    top: 30px;
+
+    transform: translateX(-50%);
+
+    font-size: 50px;
+}
+
+
+/* penutup amplop */
+
+.envelope-flap {
+    position: absolute;
+
+    z-index: 4;
+
+    left: 0;
+    top: 0;
+
+    width: 0;
+    height: 0;
+
+    border-left:
+        125px solid transparent;
+
+    border-right:
+        125px solid transparent;
+
+    border-top:
+        95px solid #ffacd7;
+}
+
+
 /* =========================
    SURAT
 ========================= */
 
-.letter-screen {
+.letter-overlay {
     position: fixed;
+
     inset: 0;
 
-    z-index: 50;
+    z-index: 100;
 
     display: flex;
+
     justify-content: center;
+
     align-items: center;
 
     padding: 20px;
 
-    background: rgba(2, 3, 20, .82);
+    background:
+        rgba(0,0,15,.82);
 
     opacity: 0;
+
     visibility: hidden;
 
     transition: .5s;
 }
 
-.letter-screen.show {
+.letter-overlay.show {
     opacity: 1;
+
     visibility: visible;
 }
+
+
+/* KERTAS */
 
 .letter {
     position: relative;
 
-    width: min(520px, 92vw);
+    width: min(530px, 94vw);
+
     max-height: 88vh;
 
     overflow-y: auto;
 
-    padding: 55px 40px 35px;
+    padding:
+        50px
+        38px
+        35px;
 
-    /* bentuk kertas surat */
+    color: #573447;
+
     background:
         linear-gradient(
             90deg,
-            rgba(255,255,255,.3),
+            rgba(255,255,255,.35),
             transparent 8%,
             transparent 92%,
-            rgba(255,255,255,.3)
+            rgba(255,255,255,.35)
         ),
         #fff8ed;
 
-    color: #583548;
+    border:
+        1px solid #efd7c5;
 
-    border-radius: 4px;
-
-    border: 1px solid #efd8c8;
+    border-radius: 5px;
 
     box-shadow:
-        0 20px 60px rgba(0,0,0,.5),
-        0 0 25px rgba(255,170,210,.25);
+        0 20px 70px rgba(0,0,0,.55),
+        0 0 30px rgba(255,150,205,.25);
 
     transform:
         translateY(40px)
         scale(.85)
         rotate(-2deg);
 
-    transition: .7s;
-
-    /* kertas */
-    background-size: 100% 100%;
+    transition: .6s;
 }
 
-/* garis surat */
-
-.letter::before {
-    content: "";
-
-    position: absolute;
-
-    left: 35px;
-    right: 35px;
-    top: 92px;
-    bottom: 30px;
-
-    background:
-        repeating-linear-gradient(
-            to bottom,
-            transparent 0px,
-            transparent 31px,
-            rgba(210,160,180,.22) 32px
-        );
-
-    pointer-events: none;
-}
-
-.letter-screen.show .letter {
+.letter-overlay.show .letter {
     transform:
         translateY(0)
         scale(1)
         rotate(0);
 }
 
-.letter h2,
-.letter p,
-.letter h3,
-.surprise-button,
-.bouquet,
-.gabriela {
+
+/* garis kertas */
+
+.letter::before {
+    content: "";
+
+    position: absolute;
+
+    left: 30px;
+    right: 30px;
+
+    top: 100px;
+    bottom: 25px;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0,
+            transparent 30px,
+            rgba(205,160,180,.2) 31px
+        );
+
+    pointer-events: none;
+}
+
+
+.letter-content {
     position: relative;
+
     z-index: 2;
 }
+
 
 .letter h2 {
     text-align: center;
 
-    color: #d94b91;
+    color: #d54b91;
 
     font-family: Georgia, serif;
 
@@ -121,6 +625,7 @@
     margin-bottom: 30px;
 }
 
+
 .letter p {
     font-family: Georgia, serif;
 
@@ -128,31 +633,30 @@
 
     line-height: 1.9;
 
-    margin-bottom: 16px;
+    margin-bottom: 15px;
 }
+
 
 .letter h3 {
     text-align: center;
 
-    color: #d94b91;
+    color: #d54b91;
 
     font-family: Georgia, serif;
-
-    font-size: 18px;
 
     margin-top: 25px;
 }
 
 
-/* tombol X */
+/* CLOSE */
 
-.close {
+.close-button {
     position: absolute;
 
-    top: 10px;
-    right: 15px;
+    z-index: 10;
 
-    z-index: 5;
+    right: 12px;
+    top: 8px;
 
     width: 40px;
     height: 40px;
@@ -161,34 +665,42 @@
 
     background: transparent;
 
-    color: #c85b91;
+    color: #c64e89;
 
-    font-size: 30px;
+    font-size: 32px;
 
     cursor: pointer;
 }
 
 
 /* =========================
-   TOMBOL KEJUTAN
+   KEJUTAN
 ========================= */
 
 .surprise-button {
     display: block;
 
-    margin: 30px auto 15px;
+    position: relative;
 
-    padding: 13px 24px;
+    z-index: 20;
 
-    border: 0;
+    margin:
+        30px auto
+        10px;
+
+    padding:
+        13px 24px;
+
+    border: none;
 
     border-radius: 30px;
 
-    background: linear-gradient(
-        135deg,
-        #e85d9f,
-        #c94687
-    );
+    background:
+        linear-gradient(
+            135deg,
+            #e75b9f,
+            #c94083
+        );
 
     color: white;
 
@@ -199,19 +711,22 @@
     cursor: pointer;
 
     box-shadow:
-        0 7px 20px rgba(190,60,130,.35);
+        0 7px 20px
+        rgba(200,60,130,.4);
 
     transition: .3s;
-
-    -webkit-tap-highlight-color: transparent;
 }
 
 .surprise-button:hover {
-    transform: translateY(-2px) scale(1.04);
+    transform: scale(1.05);
 }
 
 .surprise-button:active {
     transform: scale(.94);
+}
+
+.surprise-button:disabled {
+    cursor: default;
 }
 
 
@@ -224,50 +739,39 @@
 
     position: relative;
 
-    width: 230px;
-    height: 190px;
+    width: 250px;
+    height: 200px;
 
-    margin: 10px auto 0;
+    margin:
+        10px auto
+        0;
 
     text-align: center;
 }
 
 .bouquet.show {
     display: block;
-
-    animation:
-        bouquetAppear .8s ease forwards;
-}
-
-@keyframes bouquetAppear {
-
-    from {
-        opacity: 0;
-        transform: translateY(25px) scale(.7);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
 }
 
 
-/* bunga dalam buket */
+/* bunga */
 
-.bouquet-flowers {
-    position: relative;
+.flowers {
+    position: absolute;
+
+    left: 0;
+    top: 0;
 
     width: 100%;
-    height: 125px;
+    height: 140px;
 }
 
-.bouquet-flowers span {
+
+.flower {
     position: absolute;
 
     left: 50%;
-
-    bottom: 20px;
+    bottom: 10px;
 
     font-size: 42px;
 
@@ -275,68 +779,67 @@
 
     transform:
         translateX(-50%)
-        translateY(45px)
+        translateY(50px)
         scale(0);
 
     animation:
-        flowerBloom .8s
+        bloom .8s
         cubic-bezier(.17,.67,.3,1.3)
         forwards;
 }
 
 
-/* posisi tiap bunga */
-
-.bouquet-flowers span:nth-child(1) {
-    margin-left: -75px;
-    bottom: 18px;
+.f1 {
+    margin-left: -80px;
+    bottom: 5px;
     animation-delay: .1s;
 }
 
-.bouquet-flowers span:nth-child(2) {
-    margin-left: -45px;
-    bottom: 48px;
+.f2 {
+    margin-left: -50px;
+    bottom: 40px;
     animation-delay: .25s;
 }
 
-.bouquet-flowers span:nth-child(3) {
-    margin-left: -15px;
-    bottom: 68px;
+.f3 {
+    margin-left: -20px;
+    bottom: 65px;
     animation-delay: .4s;
 }
 
-.bouquet-flowers span:nth-child(4) {
+.f4 {
     margin-left: 15px;
-    bottom: 72px;
+    bottom: 70px;
     animation-delay: .55s;
 }
 
-.bouquet-flowers span:nth-child(5) {
-    margin-left: 45px;
-    bottom: 48px;
+.f5 {
+    margin-left: 48px;
+    bottom: 40px;
     animation-delay: .7s;
 }
 
-.bouquet-flowers span:nth-child(6) {
-    margin-left: 72px;
-    bottom: 18px;
+.f6 {
+    margin-left: 78px;
+    bottom: 5px;
     animation-delay: .85s;
 }
 
-.bouquet-flowers span:nth-child(7) {
+.f7 {
     margin-left: 0;
-    bottom: 92px;
+    bottom: 90px;
     animation-delay: 1s;
 }
 
-@keyframes flowerBloom {
+
+@keyframes bloom {
 
     0% {
         opacity: 0;
 
         transform:
             translateX(-50%)
-            translateY(45px)
+            translateY(50px)
             scale(0);
     }
 
@@ -360,32 +863,35 @@
 }
 
 
-/* kertas pembungkus buket */
+/* bungkus buket */
 
-.bouquet-paper {
+.bouquet-wrap {
     position: absolute;
 
-    left: 50%;
-    bottom: 0;
+    z-index: 5;
 
-    transform: translateX(-50%);
+    left: 50%;
+    bottom: -5px;
+
+    transform:
+        translateX(-50%);
 
     font-size: 85px;
-
-    z-index: 5;
 }
 
 
-/* =========================
-   NAMA GABRIELA
-========================= */
+/* NAMA */
 
-.gabriela {
+.name {
     display: none;
+
+    position: relative;
+
+    z-index: 10;
 
     text-align: center;
 
-    margin-top: -5px;
+    color: #d54b91;
 
     font-family: Georgia, serif;
 
@@ -393,26 +899,28 @@
 
     font-weight: bold;
 
-    color: #d94b91;
+    margin-top: -5px;
 
     text-shadow:
-        0 0 8px rgba(255,130,190,.5);
+        0 0 10px
+        rgba(255,100,180,.5);
 }
 
-.gabriela.show {
+.name.show {
     display: block;
 
     animation:
-        nameAppear 1.2s
-        cubic-bezier(.17,.67,.3,1.3)
-        forwards;
+        nameShow 1s
+        cubic-bezier(.17,.67,.3,1.3);
 }
 
-@keyframes nameAppear {
+
+@keyframes nameShow {
 
     0% {
         opacity: 0;
-        transform: scale(.2);
+
+        transform: scale(.3);
     }
 
     70% {
@@ -421,7 +929,45 @@
 
     100% {
         opacity: 1;
+
         transform: scale(1);
+    }
+}
+
+
+/* =========================
+   LOVE TERBANG
+========================= */
+
+.floating-heart {
+    position: fixed;
+
+    z-index: 200;
+
+    pointer-events: none;
+
+    animation:
+        heartFly 2.5s ease-out
+        forwards;
+}
+
+
+@keyframes heartFly {
+
+    0% {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(.5);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translateY(-250px)
+            scale(1.3);
     }
 }
 
@@ -432,14 +978,50 @@
 
 @media (max-width: 600px) {
 
+    .home h1 {
+        font-size: 32px;
+    }
+
+    .subtitle {
+        font-size: 15px;
+    }
+
+    .big-heart {
+        width: 90px;
+        height: 90px;
+
+        font-size: 45px;
+    }
+
+    .moon {
+        width: 70px;
+        height: 70px;
+
+        right: 7%;
+        top: 7%;
+    }
+
+    .ground-flowers {
+        font-size: 40px;
+    }
+
+    .envelope {
+        width: 210px;
+        height: 140px;
+    }
+
+    .envelope-flap {
+        border-left-width: 105px;
+        border-right-width: 105px;
+        border-top-width: 80px;
+    }
+
     .letter {
         width: 94vw;
 
-        max-height: 88vh;
-
         padding:
-            50px
-            24px
+            48px
+            22px
             30px;
     }
 
@@ -458,16 +1040,6 @@
         line-height: 1.8;
     }
 
-    .letter h3 {
-        font-size: 16px;
-    }
-
-    .surprise-button {
-        font-size: 14px;
-
-        padding: 12px 18px;
-    }
-
     .bouquet {
         transform: scale(.85);
 
@@ -476,7 +1048,7 @@
         margin-bottom: -20px;
     }
 
-    .gabriela {
+    .name {
         font-size: 25px;
     }
 }
