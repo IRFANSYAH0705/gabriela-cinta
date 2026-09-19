@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,71 +12,80 @@
 
 <body>
 
-    <!-- LANGIT -->
-    <div class="sky">
+    <!-- =========================
+         BACKGROUND
+    ========================== -->
+
+    <div class="background">
+
         <div class="stars"></div>
+
         <div class="moon"></div>
 
-        <div class="comet comet-1"></div>
-        <div class="comet comet-2"></div>
-        <div class="comet comet-3"></div>
+        <div class="comet comet-one"></div>
+        <div class="comet comet-two"></div>
+        <div class="comet comet-three"></div>
+
     </div>
 
 
-    <!-- HALAMAN UTAMA -->
+    <!-- =========================
+         HALAMAN UTAMA
+    ========================== -->
+
     <main class="home" id="home">
 
-        <h1>For Gabriela ❤️</h1>
+        <div class="home-content">
 
-        <p>Ada sesuatu untuk kamu...</p>
+            <h1>
+                For Gabriela
+                <span>❤️</span>
+            </h1>
 
-        <button
-            id="heartButton"
-            class="heart-button"
-            type="button">
+            <p>
+                Ada sesuatu untuk kamu...
+            </p>
 
-            ❤️
+            <button
+                id="heartButton"
+                class="heart-button"
+                type="button">
 
-        </button>
+                ❤️
 
-        <p class="click-text">
-            Klik hatinya
-        </p>
+            </button>
+
+            <div class="hint">
+                Klik hatinya
+            </div>
+
+        </div>
 
     </main>
 
 
-    <!-- BUNGA BAWAH -->
-    <div
-        id="flowers"
-        class="flowers">
+    <!-- =========================
+         AMPOP / SURAT
+    ========================== -->
 
-        <span>🌷</span>
-        <span>🌷</span>
-        <span>🌷</span>
-        <span>🌷</span>
-        <span>🌷</span>
-        <span>🌷</span>
-        <span>🌷</span>
-
-    </div>
-
-
-    <!-- AMPLOP -->
     <section
-        id="envelopeBox"
-        class="envelope-box">
+        id="envelopeScene"
+        class="envelope-scene">
 
-        <p>From me, for you 💗</p>
+        <div class="envelope-title">
+            From me, for you
+            <span>💗</span>
+        </div>
+
 
         <button
-            id="envelope"
+            id="envelopeButton"
             class="envelope"
             type="button">
 
-            <div class="envelope-back"></div>
+            <div class="envelope-body"></div>
 
-            <div class="letter-paper">
+            <div class="envelope-paper">
                 💌
             </div>
 
@@ -83,60 +93,77 @@
 
         </button>
 
-        <p class="click-letter">
-            Klik suratnya 💌
-        </p>
+
+        <div class="envelope-hint">
+            Klik suratnya
+        </div>
 
     </section>
 
 
-    <!-- OVERLAY SURAT -->
+    <!-- =========================
+         SURAT
+    ========================== -->
+
     <div
         id="letterOverlay"
         class="letter-overlay">
 
-        <div class="letter">
+        <article class="letter">
 
             <button
-                id="closeLetter"
-                class="close-letter"
+                id="closeButton"
+                class="close-button"
                 type="button">
+
                 ×
+
             </button>
 
 
-            <div class="letter-content">
+            <div class="letter-inner">
+
+                <div class="letter-top">
+                    💌
+                </div>
 
                 <h2>
-                    Untuk Gabriela 💗
+                    Untuk Gabriela
                 </h2>
+
 
                 <p>
                     Hai Gab...
                 </p>
 
                 <p>
-                    Aku cuma mau menyampaikan sesuatu
-                    lewat halaman kecil ini.
+                    Aku membuat halaman kecil ini
+                    khusus untuk kamu.
                 </p>
 
                 <p>
-                    Aku senang bisa mengenal kamu.
-                    Semoga kamu selalu bahagia dan
-                    selalu punya alasan untuk tersenyum.
+                    Mungkin sederhana, tapi aku berharap
+                    halaman ini bisa membuat kamu tersenyum.
                 </p>
 
                 <p>
-                    Mungkin kata-katanya sederhana,
-                    tapi aku membuat ini khusus untuk kamu.
+                    Terima kasih sudah menjadi seseorang
+                    yang menyenangkan untuk dikenal.
                 </p>
+
+
+                <div class="letter-line"></div>
+
 
                 <h3>
-                    ❤️ From me, for you ❤️
+                    From me, for you ❤️
                 </h3>
 
 
-                <!-- KEJUTAN -->
+                <!-- =====================
+                     TOMBOL KEJUTAN
+                ====================== -->
+
                 <button
                     id="surpriseButton"
                     class="surprise-button"
@@ -147,21 +174,53 @@
                 </button>
 
 
-                <!-- BUKET -->
+                <!-- =====================
+                     BUKET
+                ====================== -->
+
                 <div
                     id="bouquet"
                     class="bouquet">
 
-                    <div class="flower f1">🌷</div>
-                    <div class="flower f2">🌷</div>
-                    <div class="flower f3">🌷</div>
-                    <div class="flower f4">🌷</div>
-                    <div class="flower f5">🌷</div>
-                    <div class="flower f6">🌷</div>
-                    <div class="flower f7">🌷</div>
+                    <div class="bouquet-flowers">
 
-                    <div class="wrap">
-                        🎀
+                        <div class="flower flower-1">
+                            <span>🌷</span>
+                        </div>
+
+                        <div class="flower flower-2">
+                            <span>🌷</span>
+                        </div>
+
+                        <div class="flower flower-3">
+                            <span>🌷</span>
+                        </div>
+
+                        <div class="flower flower-4">
+                            <span>🌷</span>
+                        </div>
+
+                        <div class="flower flower-5">
+                            <span>🌷</span>
+                        </div>
+
+                        <div class="flower flower-6">
+                            <span>🌷</span>
+                        </div>
+
+                        <div class="flower flower-7">
+                            <span>🌷</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="bouquet-wrap">
+
+                        <div class="ribbon">
+                            🎀
+                        </div>
+
                     </div>
 
                 </div>
@@ -171,13 +230,14 @@
                     id="gabriela"
                     class="gabriela">
 
-                    Gabriela ❤️
+                    Gabriela
+                    <span>❤️</span>
 
                 </div>
 
             </div>
 
-        </div>
+        </article>
 
     </div>
 
@@ -185,4 +245,5 @@
     <script src="script.js"></script>
 
 </body>
+
 </html>
