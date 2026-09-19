@@ -1,26 +1,26 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    /* =========================
+    /* =====================================
        ELEMENT
-    ========================== */
+    ===================================== */
 
     const home =
         document.getElementById("home");
 
+    const envelopePage =
+        document.getElementById("envelopePage");
+
     const heartButton =
         document.getElementById("heartButton");
-
-    const envelopeScene =
-        document.getElementById("envelopeScene");
 
     const envelopeButton =
         document.getElementById("envelopeButton");
 
-    const letterOverlay =
-        document.getElementById("letterOverlay");
+    const letterPage =
+        document.getElementById("letterPage");
 
-    const closeButton =
-        document.getElementById("closeButton");
+    const closeLetter =
+        document.getElementById("closeLetter");
 
     const surpriseButton =
         document.getElementById("surpriseButton");
@@ -28,45 +28,37 @@ document.addEventListener("DOMContentLoaded", function () {
     const bouquet =
         document.getElementById("bouquet");
 
-    const gabriela =
-        document.getElementById("gabriela");
+    const gabrielaName =
+        document.getElementById("gabrielaName");
 
 
-    /* =========================
+    /* =====================================
        KLIK HATI
-    ========================== */
+    ===================================== */
 
     heartButton.addEventListener(
         "click",
         function () {
 
-            /* love muncul */
-            createHearts(25);
+            createHearts(30);
 
+            home.classList.remove("active");
 
-            /* halaman utama menghilang */
-            home.classList.add("hide");
+            setTimeout(function () {
 
+                envelopePage.classList.add(
+                    "active"
+                );
 
-            /* amplop muncul */
-            setTimeout(
-                function () {
-
-                    envelopeScene.classList.add(
-                        "show"
-                    );
-
-                },
-                700
-            );
+            }, 600);
 
         }
     );
 
 
-    /* =========================
+    /* =====================================
        KLIK AMPLOP
-    ========================== */
+    ===================================== */
 
     envelopeButton.addEventListener(
         "click",
@@ -74,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             createHearts(20);
 
-            letterOverlay.classList.add(
+            letterPage.classList.add(
                 "show"
             );
 
@@ -82,15 +74,15 @@ document.addEventListener("DOMContentLoaded", function () {
     );
 
 
-    /* =========================
+    /* =====================================
        TUTUP SURAT
-    ========================== */
+    ===================================== */
 
-    closeButton.addEventListener(
+    closeLetter.addEventListener(
         "click",
         function () {
 
-            letterOverlay.classList.remove(
+            letterPage.classList.remove(
                 "show"
             );
 
@@ -98,52 +90,46 @@ document.addEventListener("DOMContentLoaded", function () {
     );
 
 
-    /* =========================
+    /* =====================================
        KEJUTAN
-    ========================== */
+    ===================================== */
 
     surpriseButton.addEventListener(
         "click",
         function () {
 
-            /* cegah klik berkali-kali */
             surpriseButton.disabled = true;
 
-
-            /* ubah tulisan */
             surpriseButton.innerHTML =
-                "💐 Untuk Gabriela...";
+                "💐 Untuk Gabriela ❤️";
 
 
-            /* buket muncul */
             bouquet.classList.add(
                 "show"
             );
 
 
-            /* love */
-            createHearts(45);
+            createHearts(50);
 
 
-            /* nama muncul setelah bunga */
             setTimeout(
                 function () {
 
-                    gabriela.classList.add(
+                    gabrielaName.classList.add(
                         "show"
                     );
 
                 },
-                1900
+                1800
             );
 
         }
     );
 
 
-    /* =========================
+    /* =====================================
        LOVE PARTICLES
-    ========================== */
+    ===================================== */
 
     function createHearts(jumlah) {
 
@@ -151,7 +137,8 @@ document.addEventListener("DOMContentLoaded", function () {
             "❤️",
             "💕",
             "💗",
-            "💖"
+            "💖",
+            "💘"
         ];
 
 
@@ -186,14 +173,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             heart.style.bottom =
-                Math.random() * 30 +
+                Math.random() * 35 +
                 "vh";
 
 
             heart.style.fontSize =
                 (
-                    18 +
-                    Math.random() * 24
+                    16 +
+                    Math.random() * 22
                 ) +
                 "px";
 
