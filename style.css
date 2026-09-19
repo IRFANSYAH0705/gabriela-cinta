@@ -19,10 +19,10 @@ body {
 
     background:
         radial-gradient(
-            circle at 50% 80%,
-            #28123e 0%,
-            #0b0d2b 45%,
-            #02030f 100%
+            circle at 50% 85%,
+            #321444,
+            #0c0d2c 50%,
+            #02030d
         );
 }
 
@@ -33,12 +33,13 @@ body {
 
 .sky {
     position: fixed;
-
     inset: 0;
+
+    z-index: 1;
 
     overflow: hidden;
 
-    z-index: 0;
+    pointer-events: none;
 }
 
 
@@ -46,7 +47,6 @@ body {
 
 .stars {
     position: absolute;
-
     inset: 0;
 
     background-image:
@@ -57,19 +57,24 @@ body {
         ),
         radial-gradient(
             circle,
-            rgba(255,255,255,.8) 1px,
+            rgba(255,255,255,.7) 1px,
+            transparent 1.5px
+        ),
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.5) 1px,
             transparent 1.5px
         );
 
     background-size:
-        75px 75px,
-        130px 130px;
+        70px 70px,
+        120px 120px,
+        180px 180px;
 
     background-position:
         10px 20px,
-        50px 70px;
-
-    opacity: .8;
+        30px 70px,
+        90px 40px;
 }
 
 
@@ -78,11 +83,11 @@ body {
 .moon {
     position: absolute;
 
-    width: 110px;
-    height: 110px;
+    width: 115px;
+    height: 115px;
 
     right: 10%;
-    top: 9%;
+    top: 8%;
 
     border-radius: 50%;
 
@@ -90,7 +95,7 @@ body {
 
     box-shadow:
         0 0 20px #fffbdc,
-        0 0 60px rgba(255,251,220,.45);
+        0 0 60px rgba(255,250,220,.4);
 }
 
 
@@ -101,7 +106,7 @@ body {
 .comet {
     position: absolute;
 
-    width: 140px;
+    width: 150px;
     height: 3px;
 
     border-radius: 50%;
@@ -110,15 +115,13 @@ body {
         linear-gradient(
             90deg,
             transparent,
-            rgba(255,255,255,.25),
+            rgba(255,255,255,.2),
             white
         );
 
     transform: rotate(35deg);
 
     opacity: 0;
-
-    z-index: 2;
 }
 
 
@@ -144,46 +147,52 @@ body {
     box-shadow:
         0 0 8px white,
         0 0 18px white,
-        0 0 30px rgba(255,255,255,.8);
+        0 0 30px white;
 }
 
 
-/* komet bergerak kiri atas → kanan bawah */
+/* KOMET 1 */
 
-.comet-1 {
+.comet1 {
     left: -180px;
     top: 12%;
 
     animation:
-        shootingStar 5s linear infinite;
+        cometMove 5s linear infinite;
 }
 
-.comet-2 {
+
+/* KOMET 2 */
+
+.comet2 {
     left: -180px;
-    top: 35%;
+    top: 32%;
 
     animation:
-        shootingStar 6s linear infinite;
+        cometMove 6s linear infinite;
 
     animation-delay: 2s;
 }
 
-.comet-3 {
+
+/* KOMET 3 */
+
+.comet3 {
     left: -180px;
-    top: 5%;
+    top: 4%;
 
     animation:
-        shootingStar 7s linear infinite;
+        cometMove 7s linear infinite;
 
     animation-delay: 4s;
 }
 
 
-@keyframes shootingStar {
+@keyframes cometMove {
 
     0% {
         transform:
-            translate(-150px, -100px)
+            translate(-100px, -80px)
             rotate(35deg);
 
         opacity: 0;
@@ -199,7 +208,7 @@ body {
 
     65% {
         transform:
-            translate(850px, 600px)
+            translate(900px, 600px)
             rotate(35deg);
 
         opacity: 0;
@@ -234,30 +243,28 @@ body {
     text-align: center;
 }
 
-
 .home h1 {
     font-size: 50px;
 
     margin-bottom: 12px;
 
     text-shadow:
-        0 0 10px #ff77c8,
-        0 0 30px #ff2eaa;
+        0 0 10px #ff75c8,
+        0 0 30px #ff2ea9;
 }
 
-
-.subtitle {
+.home p {
     font-size: 18px;
 
-    opacity: .9;
-
-    margin-bottom: 35px;
+    margin-bottom: 30px;
 }
 
 
-/* HATI */
+/* =========================
+   HATI
+========================= */
 
-.big-heart {
+.heart-button {
     width: 110px;
     height: 110px;
 
@@ -273,25 +280,26 @@ body {
     cursor: pointer;
 
     box-shadow:
-        0 0 20px rgba(255,70,180,.6),
-        0 0 60px rgba(255,70,180,.2);
+        0 0 20px rgba(255,70,180,.7),
+        0 0 50px rgba(255,70,180,.2);
 
     transition: .3s;
+
+    position: relative;
+
+    z-index: 30;
 }
 
-.big-heart:hover {
+.heart-button:hover {
     transform: scale(1.1);
 }
 
-.big-heart:active {
+.heart-button:active {
     transform: scale(.9);
 }
 
-
-.instruction {
+.hint {
     margin-top: 15px;
-
-    font-size: 15px;
 
     opacity: .8;
 }
@@ -301,10 +309,10 @@ body {
    BUNGA BAWAH
 ========================= */
 
-.ground-flowers {
+.bottom-flowers {
     position: fixed;
 
-    z-index: 5;
+    z-index: 8;
 
     left: 0;
     bottom: -100px;
@@ -315,46 +323,49 @@ body {
 
     justify-content: space-around;
 
-    font-size: 60px;
+    font-size: 55px;
 
     opacity: 0;
 
     transition:
         bottom 1s ease,
         opacity 1s ease;
+
+    pointer-events: none;
 }
 
-.ground-flowers.show {
+.bottom-flowers.show {
     bottom: 10px;
 
     opacity: 1;
 }
 
-.ground-flowers span {
-    animation: flowerMove 3s ease-in-out infinite;
+.bottom-flowers span {
+    animation:
+        sway 3s ease-in-out infinite;
 }
 
-.ground-flowers span:nth-child(2) {
+.bottom-flowers span:nth-child(2) {
     animation-delay: .2s;
 }
 
-.ground-flowers span:nth-child(3) {
+.bottom-flowers span:nth-child(3) {
     animation-delay: .4s;
 }
 
-.ground-flowers span:nth-child(4) {
+.bottom-flowers span:nth-child(4) {
     animation-delay: .6s;
 }
 
-.ground-flowers span:nth-child(5) {
+.bottom-flowers span:nth-child(5) {
     animation-delay: .8s;
 }
 
-.ground-flowers span:nth-child(6) {
+.bottom-flowers span:nth-child(6) {
     animation-delay: 1s;
 }
 
-@keyframes flowerMove {
+@keyframes sway {
 
     0%,
     100% {
@@ -371,28 +382,32 @@ body {
    AMPLOP
 ========================= */
 
-.envelope-section {
+.envelope-box {
     position: fixed;
 
     z-index: 20;
 
     left: 50%;
-    top: 52%;
+    top: 50%;
 
     transform:
         translate(-50%, -50%)
-        scale(.5);
+        scale(.4);
 
     opacity: 0;
 
     visibility: hidden;
 
-    text-align: center;
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
 
     transition: 1s;
 }
 
-.envelope-section.show {
+.envelope-box.show {
     transform:
         translate(-50%, -50%)
         scale(1);
@@ -402,17 +417,16 @@ body {
     visibility: visible;
 }
 
-
-.small-title {
+.envelope-box p {
     margin-bottom: 15px;
 
-    font-size: 22px;
+    font-size: 21px;
 
-    color: #ffb6dd;
+    color: #ffb6dc;
 }
 
 
-/* bentuk amplop */
+/* amplop */
 
 .envelope {
     position: relative;
@@ -426,54 +440,52 @@ body {
 
     cursor: pointer;
 
-    filter:
-        drop-shadow(
-            0 15px 25px rgba(0,0,0,.5)
-        );
-
     transition: .3s;
 }
 
 .envelope:hover {
-    transform: scale(1.05);
+    transform: scale(1.06);
 }
 
 
-/* bagian belakang */
+/* belakang */
 
 .envelope-back {
     position: absolute;
 
     inset: 0;
 
-    background: #e76cae;
+    background: #e96eb0;
 
-    border-radius: 7px;
+    border-radius: 8px;
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.5);
 }
 
 
-/* kertas kecil */
+/* ikon */
 
-.letter-paper {
+.paper-icon {
     position: absolute;
 
-    z-index: 3;
+    z-index: 4;
 
     left: 50%;
-    top: 30px;
+    top: 35px;
 
     transform: translateX(-50%);
 
-    font-size: 50px;
+    font-size: 48px;
 }
 
 
-/* penutup amplop */
+/* flap */
 
 .envelope-flap {
     position: absolute;
 
-    z-index: 4;
+    z-index: 5;
 
     left: 0;
     top: 0;
@@ -512,7 +524,7 @@ body {
     padding: 20px;
 
     background:
-        rgba(0,0,15,.82);
+        rgba(0,0,20,.82);
 
     opacity: 0;
 
@@ -528,8 +540,6 @@ body {
 }
 
 
-/* KERTAS */
-
 .letter {
     position: relative;
 
@@ -540,42 +550,30 @@ body {
     overflow-y: auto;
 
     padding:
-        50px
-        38px
-        35px;
+        50px 38px 35px;
+
+    background: #fff8ed;
 
     color: #573447;
 
-    background:
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.35),
-            transparent 8%,
-            transparent 92%,
-            rgba(255,255,255,.35)
-        ),
-        #fff8ed;
-
     border:
-        1px solid #efd7c5;
+        1px solid #efd8c7;
 
     border-radius: 5px;
 
     box-shadow:
-        0 20px 70px rgba(0,0,0,.55),
-        0 0 30px rgba(255,150,205,.25);
+        0 20px 70px rgba(0,0,0,.6),
+        0 0 30px rgba(255,150,205,.3);
 
     transform:
-        translateY(40px)
-        scale(.85)
-        rotate(-2deg);
+        scale(.7)
+        rotate(-3deg);
 
     transition: .6s;
 }
 
 .letter-overlay.show .letter {
     transform:
-        translateY(0)
         scale(1)
         rotate(0);
 }
@@ -588,8 +586,8 @@ body {
 
     position: absolute;
 
-    left: 30px;
-    right: 30px;
+    left: 25px;
+    right: 25px;
 
     top: 100px;
     bottom: 25px;
@@ -599,19 +597,25 @@ body {
             to bottom,
             transparent 0,
             transparent 30px,
-            rgba(205,160,180,.2) 31px
+            rgba(200,150,170,.2) 31px
         );
 
     pointer-events: none;
 }
 
 
-.letter-content {
+/* isi */
+
+.letter h2,
+.letter p,
+.letter h3,
+.surprise-button,
+.bouquet,
+.gabriela {
     position: relative;
 
-    z-index: 2;
+    z-index: 5;
 }
-
 
 .letter h2 {
     text-align: center;
@@ -625,7 +629,6 @@ body {
     margin-bottom: 30px;
 }
 
-
 .letter p {
     font-family: Georgia, serif;
 
@@ -635,7 +638,6 @@ body {
 
     margin-bottom: 15px;
 }
-
 
 .letter h3 {
     text-align: center;
@@ -648,12 +650,12 @@ body {
 }
 
 
-/* CLOSE */
+/* TUTUP */
 
 .close-button {
     position: absolute;
 
-    z-index: 10;
+    z-index: 20;
 
     right: 12px;
     top: 8px;
@@ -665,7 +667,7 @@ body {
 
     background: transparent;
 
-    color: #c64e89;
+    color: #c84c88;
 
     font-size: 32px;
 
@@ -680,13 +682,8 @@ body {
 .surprise-button {
     display: block;
 
-    position: relative;
-
-    z-index: 20;
-
     margin:
-        30px auto
-        10px;
+        30px auto 10px;
 
     padding:
         13px 24px;
@@ -698,8 +695,8 @@ body {
     background:
         linear-gradient(
             135deg,
-            #e75b9f,
-            #c94083
+            #ed65a7,
+            #c83e83
         );
 
     color: white;
@@ -715,6 +712,8 @@ body {
         rgba(200,60,130,.4);
 
     transition: .3s;
+
+    pointer-events: auto;
 }
 
 .surprise-button:hover {
@@ -723,10 +722,6 @@ body {
 
 .surprise-button:active {
     transform: scale(.94);
-}
-
-.surprise-button:disabled {
-    cursor: default;
 }
 
 
@@ -740,13 +735,10 @@ body {
     position: relative;
 
     width: 250px;
-    height: 200px;
+    height: 205px;
 
     margin:
-        10px auto
-        0;
-
-    text-align: center;
+        10px auto 0;
 }
 
 .bouquet.show {
@@ -756,22 +748,20 @@ body {
 
 /* bunga */
 
-.flowers {
+.bouquet-flowers {
     position: absolute;
 
     left: 0;
     top: 0;
 
     width: 100%;
-    height: 140px;
+    height: 150px;
 }
 
-
-.flower {
+.bouquet-flowers span {
     position: absolute;
 
     left: 50%;
-    bottom: 10px;
 
     font-size: 42px;
 
@@ -789,45 +779,47 @@ body {
 }
 
 
-.f1 {
+/* posisi bunga */
+
+.b1 {
     margin-left: -80px;
-    bottom: 5px;
+    bottom: 10px;
     animation-delay: .1s;
 }
 
-.f2 {
+.b2 {
     margin-left: -50px;
-    bottom: 40px;
+    bottom: 45px;
     animation-delay: .25s;
 }
 
-.f3 {
+.b3 {
     margin-left: -20px;
-    bottom: 65px;
+    bottom: 70px;
     animation-delay: .4s;
 }
 
-.f4 {
+.b4 {
     margin-left: 15px;
-    bottom: 70px;
+    bottom: 75px;
     animation-delay: .55s;
 }
 
-.f5 {
+.b5 {
     margin-left: 48px;
-    bottom: 40px;
+    bottom: 45px;
     animation-delay: .7s;
 }
 
-.f6 {
+.b6 {
     margin-left: 78px;
-    bottom: 5px;
+    bottom: 10px;
     animation-delay: .85s;
 }
 
-.f7 {
+.b7 {
     margin-left: 0;
-    bottom: 90px;
+    bottom: 95px;
     animation-delay: 1s;
 }
 
@@ -863,12 +855,12 @@ body {
 }
 
 
-/* bungkus buket */
+/* pembungkus */
 
 .bouquet-wrap {
     position: absolute;
 
-    z-index: 5;
+    z-index: 10;
 
     left: 50%;
     bottom: -5px;
@@ -882,12 +874,8 @@ body {
 
 /* NAMA */
 
-.name {
+.gabriela {
     display: none;
-
-    position: relative;
-
-    z-index: 10;
 
     text-align: center;
 
@@ -906,16 +894,15 @@ body {
         rgba(255,100,180,.5);
 }
 
-.name.show {
+.gabriela.show {
     display: block;
 
     animation:
-        nameShow 1s
+        nameAppear 1s
         cubic-bezier(.17,.67,.3,1.3);
 }
 
-
-@keyframes nameShow {
+@keyframes nameAppear {
 
     0% {
         opacity: 0;
@@ -936,23 +923,22 @@ body {
 
 
 /* =========================
-   LOVE TERBANG
+   LOVE
 ========================= */
 
 .floating-heart {
     position: fixed;
 
-    z-index: 200;
+    z-index: 300;
 
     pointer-events: none;
 
     animation:
-        heartFly 2.5s ease-out
+        heartFloat 2.5s ease-out
         forwards;
 }
 
-
-@keyframes heartFly {
+@keyframes heartFloat {
 
     0% {
         opacity: 1;
@@ -982,11 +968,11 @@ body {
         font-size: 32px;
     }
 
-    .subtitle {
+    .home p {
         font-size: 15px;
     }
 
-    .big-heart {
+    .heart-button {
         width: 90px;
         height: 90px;
 
@@ -1001,7 +987,7 @@ body {
         top: 7%;
     }
 
-    .ground-flowers {
+    .bottom-flowers {
         font-size: 40px;
     }
 
@@ -1020,14 +1006,7 @@ body {
         width: 94vw;
 
         padding:
-            48px
-            22px
-            30px;
-    }
-
-    .letter::before {
-        left: 20px;
-        right: 20px;
+            48px 22px 30px;
     }
 
     .letter h2 {
@@ -1041,14 +1020,15 @@ body {
     }
 
     .bouquet {
-        transform: scale(.85);
+        transform: scale(.82);
 
-        transform-origin: top center;
+        transform-origin:
+            top center;
 
-        margin-bottom: -20px;
+        margin-bottom: -25px;
     }
 
-    .name {
+    .gabriela {
         font-size: 25px;
     }
 }
