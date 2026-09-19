@@ -1,465 +1,20 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html,
-body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    font-family: Arial, sans-serif;
-}
-
-body {
-    background:
-        linear-gradient(
-            180deg,
-            #020414,
-            #080a29 50%,
-            #190b32
-        );
-
-    color: white;
-}
-
-
-/* =========================
-   LANGIT
-========================= */
-
-.sky {
-    position: fixed;
-    inset: 0;
-    overflow: hidden;
-    z-index: 0;
-}
-
-.stars {
-    position: absolute;
-    inset: 0;
-
-    background-image:
-        radial-gradient(circle, white 1px, transparent 1.5px),
-        radial-gradient(circle, white 1px, transparent 1.5px),
-        radial-gradient(circle, #aaa 1px, transparent 1.5px);
-
-    background-size:
-        75px 75px,
-        125px 125px,
-        180px 180px;
-
-    background-position:
-        10px 20px,
-        50px 80px,
-        90px 30px;
-
-    opacity: .8;
-}
-
-
-/* BULAN */
-
-.moon {
-    position: absolute;
-
-    width: 120px;
-    height: 120px;
-
-    right: 12%;
-    top: 8%;
-
-    border-radius: 50%;
-
-    background: #fff9dc;
-
-    box-shadow:
-        0 0 25px #fff9dc,
-        0 0 70px rgba(255, 249, 220, .4);
-}
-
-
-/* =========================
-   KOMET
-========================= */
-
-.meteor {
-    position: absolute;
-
-    width: 150px;
-    height: 3px;
-
-    border-radius: 50%;
-
-    background: linear-gradient(
-        90deg,
-        rgba(255,255,255,0),
-        rgba(255,255,255,.3),
-        white
-    );
-
-    box-shadow:
-        0 0 6px white,
-        0 0 15px white;
-
-    transform: rotate(35deg);
-
-    opacity: 0;
-
-    z-index: 2;
-}
-
-
-/* kepala komet */
-
-.meteor::after {
-    content: "";
-
-    position: absolute;
-
-    right: 0;
-    top: 50%;
-
-    width: 7px;
-    height: 7px;
-
-    transform: translateY(-50%);
-
-    border-radius: 50%;
-
-    background: white;
-
-    box-shadow:
-        0 0 8px white,
-        0 0 18px white;
-}
-
-
-/* arah kanan bawah */
-
-.meteor1 {
-    left: -180px;
-    top: 12%;
-
-    animation: cometRight 5s linear infinite;
-}
-
-.meteor2 {
-    left: -180px;
-    top: 38%;
-
-    animation: cometRight 6s linear infinite;
-    animation-delay: 2.5s;
-}
-
-.meteor3 {
-    left: -180px;
-    top: 3%;
-
-    animation: cometRight 7s linear infinite;
-    animation-delay: 4s;
-}
-
-
-@keyframes cometRight {
-
-    0% {
-        transform:
-            translate(-150px, -100px)
-            rotate(35deg);
-
-        opacity: 0;
-    }
-
-    8% {
-        opacity: 1;
-    }
-
-    45% {
-        opacity: 1;
-    }
-
-    65% {
-        transform:
-            translate(700px, 500px)
-            rotate(35deg);
-
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 0;
-    }
-}
-
-
-/* =========================
-   HALAMAN UTAMA
-========================= */
-
-.main {
-    position: relative;
-
-    z-index: 5;
-
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-    flex-direction: column;
-
-    justify-content: center;
-    align-items: center;
-
-    text-align: center;
-}
-
-.main h1 {
-    font-size: 48px;
-
-    margin-bottom: 10px;
-
-    text-shadow:
-        0 0 10px #ff70c8,
-        0 0 30px #ff2eaa;
-}
-
-.hint {
-    font-size: 18px;
-    margin-bottom: 35px;
-}
-
-
-/* =========================
-   HATI
-========================= */
-
-.heart-button {
-    width: 110px;
-    height: 110px;
-
-    border: none;
-    border-radius: 50%;
-
-    background: rgba(255,255,255,.08);
-
-    font-size: 55px;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 0 20px rgba(255,70,180,.7);
-
-    transition: .4s;
-}
-
-.heart-button:hover {
-    transform: scale(1.1);
-}
-
-.click-text {
-    margin-top: 15px;
-    opacity: .8;
-}
-
-
-/* =========================
-   BUNGA BAWAH
-========================= */
-
-.garden {
-    position: absolute;
-
-    left: 0;
-    bottom: 0;
-
-    width: 100%;
-    height: 220px;
-
-    z-index: 4;
-
-    pointer-events: none;
-}
-
-.flower {
-    position: absolute;
-
-    bottom: -100px;
-
-    font-size: 65px;
-
-    opacity: 0;
-
-    transition: 1s;
-}
-
-.flower1 {
-    left: 5%;
-}
-
-.flower2 {
-    left: 20%;
-}
-
-.flower3 {
-    left: 38%;
-}
-
-.flower4 {
-    right: 35%;
-}
-
-.flower5 {
-    right: 18%;
-}
-
-.flower6 {
-    right: 4%;
-}
-
-.garden.show .flower {
-    bottom: 10px;
-
-    opacity: 1;
-
-    animation: sway 3s infinite ease-in-out;
-}
-
-@keyframes sway {
-
-    0%,100% {
-        transform: rotate(-5deg);
-    }
-
-    50% {
-        transform: rotate(5deg);
-    }
-}
-
-
-/* =========================
-   AMPLOP
-========================= */
-
-.envelope-area {
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    transform:
-        translate(-50%, -20%)
-        scale(0);
-
-    opacity: 0;
-
-    transition: 1s;
-
-    pointer-events: none;
-}
-
-.envelope-area.show {
-    transform:
-        translate(-50%, -20%)
-        scale(1);
-
-    opacity: 1;
-
-    pointer-events: auto;
-}
-
-.for-you {
-    margin-bottom: 15px;
-
-    font-size: 22px;
-
-    color: #ffb5df;
-}
-
-.envelope {
-    position: relative;
-
-    width: 240px;
-    height: 160px;
-
-    border: none;
-
-    background: #f277b7;
-
-    border-radius: 8px;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 15px 40px rgba(0,0,0,.5),
-        0 0 30px rgba(255,100,190,.5);
-
-    transition: .4s;
-}
-
-.envelope:hover {
-    transform: scale(1.05);
-}
-
-.envelope-body {
-    position: absolute;
-
-    inset: 0;
-
-    background: #f277b7;
-
-    border-radius: 8px;
-}
-
-.envelope-top {
-    position: absolute;
-
-    z-index: 3;
-
-    top: 0;
-
-    width: 0;
-    height: 0;
-
-    border-left: 120px solid transparent;
-    border-right: 120px solid transparent;
-    border-top: 90px solid #ffacd7;
-}
-
-.envelope-paper {
-    position: absolute;
-
-    z-index: 4;
-
-    left: 50%;
-    top: 45px;
-
-    transform: translateX(-50%);
-
-    font-size: 45px;
-}
-
-
 /* =========================
    SURAT
 ========================= */
 
 .letter-screen {
     position: fixed;
-
     inset: 0;
 
     z-index: 50;
 
-    background: rgba(0,0,20,.82);
-
     display: flex;
-
     justify-content: center;
     align-items: center;
 
     padding: 20px;
+
+    background: rgba(2, 3, 20, .82);
 
     opacity: 0;
     visibility: hidden;
@@ -475,29 +30,83 @@ body {
 .letter {
     position: relative;
 
-    width: min(550px,92vw);
-
-    max-height: 90vh;
+    width: min(520px, 92vw);
+    max-height: 88vh;
 
     overflow-y: auto;
 
-    background: #fff5e8;
+    padding: 55px 40px 35px;
 
-    color: #54253d;
+    /* bentuk kertas surat */
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.3),
+            transparent 8%,
+            transparent 92%,
+            rgba(255,255,255,.3)
+        ),
+        #fff8ed;
 
-    padding: 45px 35px;
+    color: #583548;
 
-    border-radius: 12px;
+    border-radius: 4px;
 
-    text-align: left;
+    border: 1px solid #efd8c8;
 
-    transform: scale(.5);
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.5),
+        0 0 25px rgba(255,170,210,.25);
 
-    transition: .6s;
+    transform:
+        translateY(40px)
+        scale(.85)
+        rotate(-2deg);
+
+    transition: .7s;
+
+    /* kertas */
+    background-size: 100% 100%;
+}
+
+/* garis surat */
+
+.letter::before {
+    content: "";
+
+    position: absolute;
+
+    left: 35px;
+    right: 35px;
+    top: 92px;
+    bottom: 30px;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0px,
+            transparent 31px,
+            rgba(210,160,180,.22) 32px
+        );
+
+    pointer-events: none;
 }
 
 .letter-screen.show .letter {
-    transform: scale(1);
+    transform:
+        translateY(0)
+        scale(1)
+        rotate(0);
+}
+
+.letter h2,
+.letter p,
+.letter h3,
+.surprise-button,
+.bouquet,
+.gabriela {
+    position: relative;
+    z-index: 2;
 }
 
 .letter h2 {
@@ -505,13 +114,21 @@ body {
 
     color: #d94b91;
 
-    margin-bottom: 25px;
+    font-family: Georgia, serif;
+
+    font-size: 28px;
+
+    margin-bottom: 30px;
 }
 
 .letter p {
-    line-height: 1.7;
+    font-family: Georgia, serif;
 
-    margin-bottom: 15px;
+    font-size: 16px;
+
+    line-height: 1.9;
+
+    margin-bottom: 16px;
 }
 
 .letter h3 {
@@ -519,20 +136,32 @@ body {
 
     color: #d94b91;
 
+    font-family: Georgia, serif;
+
+    font-size: 18px;
+
     margin-top: 25px;
 }
+
+
+/* tombol X */
 
 .close {
     position: absolute;
 
+    top: 10px;
     right: 15px;
-    top: 8px;
+
+    z-index: 5;
+
+    width: 40px;
+    height: 40px;
 
     border: none;
 
-    background: none;
+    background: transparent;
 
-    color: #d94b91;
+    color: #c85b91;
 
     font-size: 30px;
 
@@ -547,30 +176,42 @@ body {
 .surprise-button {
     display: block;
 
-    margin: 30px auto 10px;
+    margin: 30px auto 15px;
 
-    padding: 13px 22px;
+    padding: 13px 24px;
 
-    border: none;
+    border: 0;
 
-    border-radius: 25px;
+    border-radius: 30px;
 
-    background: #e75b9f;
+    background: linear-gradient(
+        135deg,
+        #e85d9f,
+        #c94687
+    );
 
     color: white;
 
     font-size: 15px;
 
+    font-weight: bold;
+
     cursor: pointer;
 
     box-shadow:
-        0 5px 20px rgba(220,70,150,.4);
+        0 7px 20px rgba(190,60,130,.35);
 
     transition: .3s;
+
+    -webkit-tap-highlight-color: transparent;
 }
 
 .surprise-button:hover {
-    transform: scale(1.05);
+    transform: translateY(-2px) scale(1.04);
+}
+
+.surprise-button:active {
+    transform: scale(.94);
 }
 
 
@@ -581,101 +222,172 @@ body {
 .bouquet {
     display: none;
 
-    text-align: center;
+    position: relative;
 
-    margin-top: 15px;
+    width: 230px;
+    height: 190px;
+
+    margin: 10px auto 0;
+
+    text-align: center;
 }
 
 .bouquet.show {
     display: block;
 
-    animation: bouquetAppear 1s ease;
+    animation:
+        bouquetAppear .8s ease forwards;
 }
 
 @keyframes bouquetAppear {
 
     from {
-        transform: scale(0);
         opacity: 0;
+        transform: translateY(25px) scale(.7);
     }
 
     to {
-        transform: scale(1);
         opacity: 1;
+        transform: translateY(0) scale(1);
     }
 }
 
+
+/* bunga dalam buket */
+
 .bouquet-flowers {
-    display: flex;
+    position: relative;
 
-    justify-content: center;
-    align-items: end;
-
-    height: 100px;
+    width: 100%;
+    height: 125px;
 }
 
 .bouquet-flowers span {
-    display: inline-block;
+    position: absolute;
 
-    font-size: 38px;
+    left: 50%;
 
-    transform: scale(0);
+    bottom: 20px;
 
-    animation: flowerBloom .8s forwards;
+    font-size: 42px;
+
+    opacity: 0;
+
+    transform:
+        translateX(-50%)
+        translateY(45px)
+        scale(0);
+
+    animation:
+        flowerBloom .8s
+        cubic-bezier(.17,.67,.3,1.3)
+        forwards;
 }
 
+
+/* posisi tiap bunga */
+
 .bouquet-flowers span:nth-child(1) {
+    margin-left: -75px;
+    bottom: 18px;
     animation-delay: .1s;
 }
 
 .bouquet-flowers span:nth-child(2) {
-    animation-delay: .2s;
+    margin-left: -45px;
+    bottom: 48px;
+    animation-delay: .25s;
 }
 
 .bouquet-flowers span:nth-child(3) {
-    animation-delay: .3s;
-}
-
-.bouquet-flowers span:nth-child(4) {
+    margin-left: -15px;
+    bottom: 68px;
     animation-delay: .4s;
 }
 
+.bouquet-flowers span:nth-child(4) {
+    margin-left: 15px;
+    bottom: 72px;
+    animation-delay: .55s;
+}
+
 .bouquet-flowers span:nth-child(5) {
-    animation-delay: .5s;
+    margin-left: 45px;
+    bottom: 48px;
+    animation-delay: .7s;
 }
 
 .bouquet-flowers span:nth-child(6) {
-    animation-delay: .6s;
+    margin-left: 72px;
+    bottom: 18px;
+    animation-delay: .85s;
 }
 
 .bouquet-flowers span:nth-child(7) {
-    animation-delay: .7s;
+    margin-left: 0;
+    bottom: 92px;
+    animation-delay: 1s;
 }
 
 @keyframes flowerBloom {
 
-    from {
-        transform: scale(0) translateY(30px);
+    0% {
+        opacity: 0;
+
+        transform:
+            translateX(-50%)
+            translateY(45px)
+            scale(0);
     }
 
-    to {
-        transform: scale(1) translateY(0);
+    70% {
+        opacity: 1;
+
+        transform:
+            translateX(-50%)
+            translateY(-5px)
+            scale(1.15);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateX(-50%)
+            translateY(0)
+            scale(1);
     }
 }
+
+
+/* kertas pembungkus buket */
 
 .bouquet-paper {
-    font-size: 65px;
+    position: absolute;
 
-    margin-top: -25px;
+    left: 50%;
+    bottom: 0;
+
+    transform: translateX(-50%);
+
+    font-size: 85px;
+
+    z-index: 5;
 }
 
 
-/* NAMA GABRIELA */
+/* =========================
+   NAMA GABRIELA
+========================= */
 
 .gabriela {
     display: none;
 
     text-align: center;
+
+    margin-top: -5px;
+
+    font-family: Georgia, serif;
 
     font-size: 30px;
 
@@ -683,62 +395,33 @@ body {
 
     color: #d94b91;
 
-    margin-top: 10px;
-
     text-shadow:
-        0 0 10px #ff8ac9;
+        0 0 8px rgba(255,130,190,.5);
 }
 
 .gabriela.show {
     display: block;
 
-    animation: nameAppear 1.2s ease;
+    animation:
+        nameAppear 1.2s
+        cubic-bezier(.17,.67,.3,1.3)
+        forwards;
 }
 
 @keyframes nameAppear {
 
-    from {
-        transform: scale(0);
+    0% {
         opacity: 0;
+        transform: scale(.2);
     }
 
-    to {
+    70% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        opacity: 1;
         transform: scale(1);
-        opacity: 1;
-    }
-}
-
-
-/* LOVE */
-
-.floating-heart {
-    position: fixed;
-
-    z-index: 100;
-
-    pointer-events: none;
-
-    font-size: 25px;
-
-    animation: loveFloat 2.5s ease-out forwards;
-}
-
-@keyframes loveFloat {
-
-    from {
-        transform:
-            translateY(0)
-            scale(.5);
-
-        opacity: 1;
-    }
-
-    to {
-        transform:
-            translateY(-250px)
-            scale(1.3);
-
-        opacity: 0;
     }
 }
 
@@ -747,60 +430,53 @@ body {
    HP
 ========================= */
 
-@media (max-width:600px) {
-
-    .main h1 {
-        font-size: 31px;
-    }
-
-    .hint {
-        font-size: 15px;
-    }
-
-    .moon {
-        width: 75px;
-        height: 75px;
-
-        right: 8%;
-        top: 7%;
-    }
-
-    .heart-button {
-        width: 90px;
-        height: 90px;
-
-        font-size: 45px;
-    }
-
-    .flower {
-        font-size: 40px;
-    }
-
-    .garden {
-        height: 150px;
-    }
-
-    .envelope {
-        width: 200px;
-        height: 135px;
-    }
-
-    .envelope-top {
-        border-left-width: 100px;
-        border-right-width: 100px;
-        border-top-width: 75px;
-    }
+@media (max-width: 600px) {
 
     .letter {
-        padding: 40px 22px;
+        width: 94vw;
+
+        max-height: 88vh;
+
+        padding:
+            50px
+            24px
+            30px;
+    }
+
+    .letter::before {
+        left: 20px;
+        right: 20px;
+    }
+
+    .letter h2 {
+        font-size: 23px;
     }
 
     .letter p {
         font-size: 14px;
+
+        line-height: 1.8;
+    }
+
+    .letter h3 {
+        font-size: 16px;
+    }
+
+    .surprise-button {
+        font-size: 14px;
+
+        padding: 12px 18px;
+    }
+
+    .bouquet {
+        transform: scale(.85);
+
+        transform-origin: top center;
+
+        margin-bottom: -20px;
     }
 
     .gabriela {
         font-size: 25px;
     }
-
 }
