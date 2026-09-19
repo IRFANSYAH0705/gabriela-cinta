@@ -4,332 +4,599 @@
     box-sizing: border-box;
 }
 
+html,
 body {
     width: 100%;
-    min-height: 100vh;
+    height: 100%;
     overflow: hidden;
     font-family: Arial, sans-serif;
-    background: linear-gradient(#08051c, #17052d, #32074b);
+}
+
+body {
+    background: linear-gradient(
+        180deg,
+        #030518 0%,
+        #090b2b 45%,
+        #170d35 100%
+    );
     color: white;
 }
 
-/* Bintang */
-.stars {
+/* LANGIT */
+
+.sky {
     position: fixed;
     inset: 0;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.stars {
+    position: absolute;
+    inset: 0;
+
     background-image:
-        radial-gradient(white 1px, transparent 1px),
-        radial-gradient(white 1px, transparent 1px);
-    background-size: 90px 90px, 140px 140px;
-    background-position: 10px 20px, 50px 70px;
+        radial-gradient(circle, white 1px, transparent 1.5px),
+        radial-gradient(circle, white 1px, transparent 1.5px),
+        radial-gradient(circle, #ddd 1px, transparent 1.5px);
+
+    background-size:
+        80px 80px,
+        130px 130px,
+        180px 180px;
+
+    background-position:
+        10px 20px,
+        40px 80px,
+        90px 30px;
+
     opacity: 0.8;
 }
 
-/* Bulan */
+/* BULAN */
+
 .moon {
     position: absolute;
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
-    background: #fff7d6;
-    box-shadow: 0 0 35px #fff7d6;
-    top: 8%;
+
+    width: 120px;
+    height: 120px;
+
     right: 12%;
+    top: 10%;
+
+    border-radius: 50%;
+
+    background: #fff9dc;
+
+    box-shadow:
+        0 0 20px #fff9dc,
+        0 0 60px rgba(255, 249, 220, 0.4);
 }
 
-/* Tampilan utama */
-.content {
+/* METEOR */
+
+.meteor {
+    position: absolute;
+
+    width: 110px;
+    height: 2px;
+
+    background: linear-gradient(
+        90deg,
+        white,
+        transparent
+    );
+
+    transform: rotate(-35deg);
+
+    opacity: 0;
+
+    animation: meteor 5s linear infinite;
+}
+
+.meteor1 {
+    top: 15%;
+    left: 5%;
+    animation-delay: 1s;
+}
+
+.meteor2 {
+    top: 30%;
+    left: 55%;
+    animation-delay: 3s;
+}
+
+.meteor3 {
+    top: 5%;
+    left: 70%;
+    animation-delay: 4.5s;
+}
+
+@keyframes meteor {
+
+    0% {
+        transform: translate(0, 0) rotate(-35deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    35% {
+        transform: translate(350px, 250px) rotate(-35deg);
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/* TAMPILAN UTAMA */
+
+.main {
     position: relative;
-    z-index: 5;
+
     width: 100%;
-    min-height: 100vh;
+    height: 100%;
+
+    z-index: 5;
 
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 
     text-align: center;
 }
 
-h1 {
-    font-size: 45px;
+.main h1 {
+    font-size: 48px;
+
+    text-shadow:
+        0 0 10px #ff75c8,
+        0 0 30px #ff3fae;
+
     margin-bottom: 10px;
-    text-shadow: 0 0 15px #ff8bd1;
 }
 
-.subtitle {
+.hint {
     font-size: 18px;
-    margin-bottom: 40px;
+    opacity: 0.9;
+
+    margin-bottom: 35px;
 }
 
-/* Amplop */
+/* TOMBOL HATI */
+
+.heart-button {
+    width: 110px;
+    height: 110px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    font-size: 55px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 20px rgba(255, 75, 180, 0.6),
+        inset 0 0 20px rgba(255, 255, 255, 0.1);
+
+    transition: 0.3s;
+}
+
+.heart-button:hover {
+    transform: scale(1.1);
+}
+
+.heart-button:active {
+    transform: scale(0.85);
+}
+
+.click-text {
+    margin-top: 15px;
+    font-size: 15px;
+    opacity: 0.8;
+}
+
+/* BUNGA */
+
+.garden {
+    position: absolute;
+
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 230px;
+
+    z-index: 4;
+
+    pointer-events: none;
+}
+
+.flower {
+    position: absolute;
+
+    bottom: -100px;
+
+    font-size: 70px;
+
+    opacity: 0;
+
+    transform: scale(0);
+
+    transition:
+        bottom 1s ease,
+        transform 1s ease,
+        opacity 1s ease;
+}
+
+.flower1 {
+    left: 5%;
+}
+
+.flower2 {
+    left: 20%;
+}
+
+.flower3 {
+    left: 38%;
+}
+
+.flower4 {
+    right: 35%;
+}
+
+.flower5 {
+    right: 18%;
+}
+
+.flower6 {
+    right: 4%;
+}
+
+/* bunga muncul */
+
+.garden.show .flower {
+    bottom: 15px;
+    opacity: 1;
+    transform: scale(1);
+
+    animation: flowerSway 3s ease-in-out infinite;
+}
+
+.flower2 {
+    transition-delay: 0.15s;
+}
+
+.flower3 {
+    transition-delay: 0.3s;
+}
+
+.flower4 {
+    transition-delay: 0.45s;
+}
+
+.flower5 {
+    transition-delay: 0.6s;
+}
+
+.flower6 {
+    transition-delay: 0.75s;
+}
+
+@keyframes flowerSway {
+
+    0%, 100% {
+        transform: rotate(-4deg) scale(1);
+    }
+
+    50% {
+        transform: rotate(4deg) scale(1.05);
+    }
+}
+
+/* AMPLOP */
+
+.envelope-area {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -20%) scale(0);
+
+    opacity: 0;
+
+    transition: 1s;
+
+    z-index: 10;
+
+    pointer-events: none;
+}
+
+.envelope-area.show {
+    transform: translate(-50%, -20%) scale(1);
+    opacity: 1;
+
+    pointer-events: auto;
+}
+
+.for-you {
+    margin-bottom: 15px;
+
+    font-size: 22px;
+
+    color: #ffb5df;
+}
+
+/* bentuk amplop */
+
 .envelope {
     position: relative;
-    width: 220px;
-    height: 145px;
 
-    background: #ff7dbd;
+    width: 240px;
+    height: 160px;
+
+    border: none;
+
+    background: #f277b7;
+
     border-radius: 8px;
 
     cursor: pointer;
 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.5),
+        0 0 30px rgba(255, 105, 190, 0.4);
 
     transition: 0.4s;
 }
 
 .envelope:hover {
-    transform: translateY(-8px) scale(1.04);
+    transform: scale(1.05);
 }
 
-.flap {
+.envelope-body {
     position: absolute;
+
+    inset: 0;
+
+    background: #f277b7;
+
+    border-radius: 8px;
+}
+
+.envelope-top {
+    position: absolute;
+
+    z-index: 3;
+
     top: 0;
     left: 0;
 
     width: 0;
     height: 0;
 
-    border-left: 110px solid transparent;
-    border-right: 110px solid transparent;
-    border-top: 80px solid #ffaad5;
+    border-left: 120px solid transparent;
+    border-right: 120px solid transparent;
+    border-top: 90px solid #ffacd7;
+}
+
+.envelope-paper {
+    position: absolute;
+
+    z-index: 2;
+
+    left: 50%;
+    top: 45px;
+
+    transform: translateX(-50%);
+
+    font-size: 45px;
+}
+
+.envelope-area > p:last-child {
+    margin-top: 15px;
+
+    font-size: 14px;
+}
+
+/* SURAT */
+
+.letter-screen {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 50;
+
+    background: rgba(0, 0, 20, 0.8);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: 0.5s;
+}
+
+.letter-screen.show {
+    opacity: 1;
+    visibility: visible;
 }
 
 .letter {
-    position: absolute;
-    z-index: 2;
-
-    width: 70px;
-    height: 70px;
-
-    left: 75px;
-    top: 38px;
-
-    background: white;
-    border-radius: 5px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    font-size: 35px;
-}
-
-.envelope p {
-    position: absolute;
-    bottom: -35px;
-    width: 100%;
-    font-size: 16px;
-}
-
-/* Bunga */
-.flowers {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-
-    width: 100%;
-    height: 180px;
-
-    z-index: 3;
-}
-
-.flower {
-    position: absolute;
-    bottom: 15px;
-    font-size: 60px;
-
-    animation: sway 3s infinite ease-in-out;
-}
-
-.f1 {
-    left: 8%;
-}
-
-.f2 {
-    left: 25%;
-    font-size: 75px;
-}
-
-.f3 {
-    left: 48%;
-    font-size: 65px;
-}
-
-.f4 {
-    right: 25%;
-    font-size: 75px;
-}
-
-.f5 {
-    right: 7%;
-}
-
-@keyframes sway {
-    0%, 100% {
-        transform: rotate(-5deg);
-    }
-
-    50% {
-        transform: rotate(5deg);
-    }
-}
-
-/* Surat */
-.letter-box {
-    position: fixed;
-    inset: 0;
-
-    background: rgba(0,0,0,0.7);
-
-    display: none;
-    justify-content: center;
-    align-items: center;
-
-    z-index: 20;
-
-    padding: 20px;
-}
-
-.letter-box.show {
-    display: flex;
-}
-
-.paper {
     position: relative;
 
-    width: min(550px, 90vw);
+    width: min(550px, 92vw);
     max-height: 85vh;
 
     overflow-y: auto;
 
     background: #fff5e8;
+
     color: #54253d;
 
-    padding: 40px;
+    padding: 45px 35px;
 
     border-radius: 12px;
 
-    box-shadow: 0 0 40px rgba(255, 150, 220, 0.6);
+    box-shadow:
+        0 0 30px rgba(255, 120, 200, 0.7);
 
-    animation: appear 0.5s ease;
+    transform: scale(0.5) rotate(-5deg);
+
+    transition: 0.6s;
 }
 
-.paper h2 {
+.letter-screen.show .letter {
+    transform: scale(1) rotate(0);
+}
+
+.letter h2 {
     text-align: center;
+
+    color: #d94b91;
+
     margin-bottom: 25px;
-    color: #d84b91;
 }
 
-.paper p {
+.letter p {
     line-height: 1.7;
+
     margin-bottom: 15px;
 }
 
-.paper h3 {
+.letter h3 {
     text-align: center;
+
+    color: #d94b91;
+
     margin-top: 25px;
-    color: #d84b91;
 }
 
 .close {
     position: absolute;
 
-    top: 10px;
+    top: 8px;
     right: 15px;
 
     border: none;
-    background: none;
+    background: transparent;
+
+    color: #d94b91;
 
     font-size: 30px;
-    color: #d84b91;
 
     cursor: pointer;
 }
 
-@keyframes appear {
-    from {
-        transform: scale(0.5);
-        opacity: 0;
+/* LOVE YANG BERTEBARAN */
+
+.floating-heart {
+    position: fixed;
+
+    z-index: 100;
+
+    pointer-events: none;
+
+    font-size: 25px;
+
+    animation: loveFloat 2s ease-out forwards;
+}
+
+@keyframes loveFloat {
+
+    0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 1;
     }
 
-    to {
-        transform: scale(1);
-        opacity: 1;
+    100% {
+        transform: translateY(-250px) scale(1.3);
+        opacity: 0;
     }
 }
 
-/* Tampilan HP */
+/* HP */
+
 @media (max-width: 600px) {
 
-    h1 {
-        font-size: 30px;
+    .main h1 {
+        font-size: 31px;
     }
 
-    .subtitle {
+    .hint {
         font-size: 15px;
-        margin-bottom: 30px;
+        margin-bottom: 25px;
+    }
+
+    .heart-button {
+        width: 90px;
+        height: 90px;
+        font-size: 45px;
     }
 
     .moon {
-        width: 80px;
-        height: 80px;
+        width: 75px;
+        height: 75px;
 
-        top: 7%;
         right: 8%;
+        top: 7%;
     }
 
-    .envelope {
-        width: 190px;
-        height: 125px;
-    }
-
-    .flap {
-        border-left-width: 95px;
-        border-right-width: 95px;
-        border-top-width: 70px;
-    }
-
-    .letter {
-        width: 60px;
-        height: 60px;
-
-        left: 65px;
-        top: 32px;
-
-        font-size: 28px;
-    }
-
-    .flowers {
-        height: 120px;
+    .garden {
+        height: 160px;
     }
 
     .flower {
-        font-size: 40px;
+        font-size: 42px;
     }
 
-    .f2,
-    .f4 {
-        font-size: 50px;
+    .garden.show .flower {
+        bottom: 10px;
     }
 
-    .paper {
-        width: 92vw;
-        max-height: 80vh;
-
-        padding: 30px 22px;
+    .envelope {
+        width: 200px;
+        height: 135px;
     }
 
-    .paper h2 {
+    .envelope-top {
+        border-left-width: 100px;
+        border-right-width: 100px;
+        border-top-width: 75px;
+    }
+
+    .envelope-paper {
+        font-size: 35px;
+        top: 38px;
+    }
+
+    .for-you {
+        font-size: 18px;
+    }
+
+    .letter {
+        padding: 40px 22px;
+    }
+
+    .letter h2 {
         font-size: 23px;
     }
 
-    .paper p {
+    .letter p {
         font-size: 14px;
-    }
-
-    .paper h3 {
-        font-size: 15px;
     }
 }
