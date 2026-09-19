@@ -9,70 +9,88 @@
 
 <body>
 
-    <div class="stars"></div>
+    <!-- Langit -->
+    <div class="sky">
+        <div class="stars"></div>
 
-    <div class="moon"></div>
+        <span class="meteor meteor1"></span>
+        <span class="meteor meteor2"></span>
+        <span class="meteor meteor3"></span>
 
-    <div class="flowers">
-        <div class="flower f1">🌷</div>
-        <div class="flower f2">🌷</div>
-        <div class="flower f3">🌷</div>
-        <div class="flower f4">🌷</div>
-        <div class="flower f5">🌷</div>
+        <div class="moon"></div>
     </div>
 
-    <div class="content">
+    <!-- Bunga -->
+    <div class="garden">
+        <div class="flower flower1">🌷</div>
+        <div class="flower flower2">🌷</div>
+        <div class="flower flower3">🌷</div>
+        <div class="flower flower4">🌷</div>
+        <div class="flower flower5">🌷</div>
+        <div class="flower flower6">🌷</div>
+    </div>
+
+    <!-- Tampilan awal -->
+    <main class="main">
 
         <h1>For Gabriela ❤️</h1>
 
-        <p class="subtitle">
-            Aku punya sesuatu untuk kamu...
+        <p class="hint">
+            Ada sesuatu untuk kamu...
         </p>
 
-        <div class="envelope" onclick="openLetter()">
+        <button class="heart-button" id="heartButton">
+            ❤️
+        </button>
 
-            <div class="letter">
-                <span>💌</span>
-            </div>
+        <p class="click-text">
+            Klik hatinya
+        </p>
 
-            <div class="flap"></div>
+        <!-- Amplop -->
+        <div class="envelope-area" id="envelopeArea">
 
-            <p>Klik aku</p>
+            <p class="for-you">For Gabriela 💌</p>
+
+            <button class="envelope" id="envelope">
+                <span class="envelope-top"></span>
+                <span class="envelope-paper">💌</span>
+                <span class="envelope-body"></span>
+            </button>
+
+            <p>Klik suratnya</p>
 
         </div>
 
-    </div>
+    </main>
 
-    <div class="letter-box" id="letterBox">
+    <!-- Surat -->
+    <div class="letter-screen" id="letterScreen">
 
-        <div class="paper">
+        <div class="letter" id="letter">
 
-            <button class="close" onclick="closeLetter()">×</button>
+            <button class="close" id="close">×</button>
 
             <h2>Untuk Gabriela 💗</h2>
 
-            <p>
-                Hai Gab...
-            </p>
+            <p>Hai Gab...</p>
 
             <p>
-                Aku mungkin nggak selalu pintar
-                dalam mengungkapkan perasaan.
-                Tapi ada satu hal yang ingin aku bilang.
+                Aku cuma mau menyampaikan sesuatu
+                yang mungkin sulit aku bilang langsung.
             </p>
 
             <p>
                 Aku senang bisa mengenal kamu.
-                Semoga setiap kali kamu melihat ini,
-                kamu bisa sedikit tersenyum. 😊
+                Semoga setiap kali kamu melihat halaman ini,
+                kamu bisa tersenyum sedikit. 😊
             </p>
 
             <p>
-                Jangan lupa jaga diri dan tetap jadi
-                Gabriela yang aku kenal ya.
+                Tetap jadi Gabriela yang aku kenal ya.
             </p>
 
-            <h3>❤️ Dari seseorang yang menyayangimu ❤️</h3>
+            <h3>❤️ From me, for you ❤️</h3>
 
         </div>
 
