@@ -13,42 +13,44 @@
 
     <!-- LANGIT -->
     <div class="sky">
-
         <div class="stars"></div>
-
         <div class="moon"></div>
 
-        <div class="comet comet1"></div>
-        <div class="comet comet2"></div>
-        <div class="comet comet3"></div>
-
+        <div class="comet comet-1"></div>
+        <div class="comet comet-2"></div>
+        <div class="comet comet-3"></div>
     </div>
 
 
-    <!-- HALAMAN AWAL -->
-    <div class="home" id="home">
+    <!-- HALAMAN UTAMA -->
+    <main class="home" id="home">
 
         <h1>For Gabriela ❤️</h1>
 
         <p>Ada sesuatu untuk kamu...</p>
 
         <button
-            class="heart-button"
             id="heartButton"
+            class="heart-button"
             type="button">
+
             ❤️
+
         </button>
 
-        <span class="hint">
+        <p class="click-text">
             Klik hatinya
-        </span>
+        </p>
 
-    </div>
+    </main>
 
 
-    <!-- BUNGA DI BAWAH -->
-    <div class="bottom-flowers" id="bottomFlowers">
+    <!-- BUNGA BAWAH -->
+    <div
+        id="flowers"
+        class="flowers">
 
+        <span>🌷</span>
         <span>🌷</span>
         <span>🌷</span>
         <span>🌷</span>
@@ -60,18 +62,20 @@
 
 
     <!-- AMPLOP -->
-    <div class="envelope-box" id="envelopeBox">
+    <section
+        id="envelopeBox"
+        class="envelope-box">
 
-        <p>Untuk Gabriela 💌</p>
+        <p>From me, for you 💗</p>
 
         <button
-            class="envelope"
             id="envelope"
+            class="envelope"
             type="button">
 
             <div class="envelope-back"></div>
 
-            <div class="paper-icon">
+            <div class="letter-paper">
                 💌
             </div>
 
@@ -79,95 +83,98 @@
 
         </button>
 
-        <span>Klik suratnya</span>
+        <p class="click-letter">
+            Klik suratnya 💌
+        </p>
 
-    </div>
+    </section>
 
 
-    <!-- SURAT -->
+    <!-- OVERLAY SURAT -->
     <div
-        class="letter-overlay"
-        id="letterOverlay">
+        id="letterOverlay"
+        class="letter-overlay">
 
         <div class="letter">
 
             <button
-                class="close-button"
-                id="closeButton"
+                id="closeLetter"
+                class="close-letter"
                 type="button">
                 ×
             </button>
 
 
-            <h2>
-                Untuk Gabriela 💗
-            </h2>
+            <div class="letter-content">
+
+                <h2>
+                    Untuk Gabriela 💗
+                </h2>
+
+                <p>
+                    Hai Gab...
+                </p>
+
+                <p>
+                    Aku cuma mau menyampaikan sesuatu
+                    lewat halaman kecil ini.
+                </p>
+
+                <p>
+                    Aku senang bisa mengenal kamu.
+                    Semoga kamu selalu bahagia dan
+                    selalu punya alasan untuk tersenyum.
+                </p>
+
+                <p>
+                    Mungkin kata-katanya sederhana,
+                    tapi aku membuat ini khusus untuk kamu.
+                </p>
+
+                <h3>
+                    ❤️ From me, for you ❤️
+                </h3>
 
 
-            <p>
-                Hai Gab...
-            </p>
+                <!-- KEJUTAN -->
+                <button
+                    id="surpriseButton"
+                    class="surprise-button"
+                    type="button">
 
-            <p>
-                Aku cuma mau menyampaikan sesuatu
-                yang mungkin sulit aku bilang langsung.
-            </p>
+                    ✨ Klik, ada kejutan ✨
 
-            <p>
-                Aku senang bisa mengenal kamu.
-                Semoga halaman kecil ini bisa membuat
-                kamu tersenyum. 😊
-            </p>
-
-            <p>
-                Tetap jadi Gabriela yang aku kenal ya.
-            </p>
+                </button>
 
 
-            <h3>
-                ❤️ From me, for you ❤️
-            </h3>
+                <!-- BUKET -->
+                <div
+                    id="bouquet"
+                    class="bouquet">
 
+                    <div class="flower f1">🌷</div>
+                    <div class="flower f2">🌷</div>
+                    <div class="flower f3">🌷</div>
+                    <div class="flower f4">🌷</div>
+                    <div class="flower f5">🌷</div>
+                    <div class="flower f6">🌷</div>
+                    <div class="flower f7">🌷</div>
 
-            <!-- TOMBOL KEJUTAN -->
-            <button
-                class="surprise-button"
-                id="surpriseButton"
-                type="button">
-
-                ✨ Klik, ada kejutan ✨
-
-            </button>
-
-
-            <!-- BUKET -->
-            <div
-                class="bouquet"
-                id="bouquet">
-
-                <div class="bouquet-flowers">
-
-                    <span class="b1">🌷</span>
-                    <span class="b2">🌷</span>
-                    <span class="b3">🌷</span>
-                    <span class="b4">🌷</span>
-                    <span class="b5">🌷</span>
-                    <span class="b6">🌷</span>
-                    <span class="b7">🌷</span>
+                    <div class="wrap">
+                        🎀
+                    </div>
 
                 </div>
 
-                <div class="bouquet-wrap">
-                    💐
+
+                <div
+                    id="gabriela"
+                    class="gabriela">
+
+                    Gabriela ❤️
+
                 </div>
 
-            </div>
-
-
-            <div
-                class="gabriela"
-                id="gabriela">
-                Gabriela ❤️
             </div>
 
         </div>
