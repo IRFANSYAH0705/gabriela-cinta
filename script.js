@@ -1,5 +1,8 @@
-const heartButton = document.getElementById("heartButton");
-const garden = document.getElementById("garden");
+const heartButton =
+    document.getElementById("heartButton");
+
+const garden =
+    document.getElementById("garden");
 
 const envelopeArea =
     document.getElementById("envelopeArea");
@@ -23,9 +26,7 @@ const gabriela =
     document.getElementById("gabriela");
 
 
-/* =========================
-   KLIK HATI
-========================= */
+/* KLIK HATI */
 
 heartButton.addEventListener("click", function () {
 
@@ -39,77 +40,63 @@ heartButton.addEventListener("click", function () {
     heartButton.style.opacity =
         "0";
 
-
     setTimeout(function () {
 
         envelopeArea.classList.add("show");
 
     }, 1800);
-
 });
 
 
-/* =========================
-   KLIK AMPLOP
-========================= */
+/* KLIK AMPLOP */
 
 envelope.addEventListener("click", function () {
 
     letterScreen.classList.add("show");
 
-    createHearts(25);
+    createHearts(20);
+});
+
+
+/* KLIK KEJUTAN */
+
+surpriseButton.addEventListener("click", function () {
+
+    /* tombol dikunci supaya tidak diklik berkali-kali */
+    surpriseButton.disabled = true;
+
+    surpriseButton.innerHTML =
+        "💐 Untuk Gabriela...";
+
+    /* munculkan buket */
+    bouquet.classList.add("show");
+
+    /* love bertebaran */
+    createHearts(35);
+
+    /* nama muncul setelah bunga mekar */
+    setTimeout(function () {
+
+        gabriela.classList.add("show");
+
+    }, 1800);
+});
+
+
+/* TUTUP SURAT */
+
+closeButton.addEventListener("click", function () {
+
+    letterScreen.classList.remove("show");
 
 });
 
 
-/* =========================
-   KLIK KEJUTAN
-========================= */
-
-surpriseButton.addEventListener(
-    "click",
-    function () {
-
-        bouquet.classList.add("show");
-
-        createHearts(40);
-
-
-        setTimeout(function () {
-
-            gabriela.classList.add("show");
-
-        }, 900);
-
-    }
-);
-
-
-/* =========================
-   TUTUP SURAT
-========================= */
-
-closeButton.addEventListener(
-    "click",
-    function () {
-
-        letterScreen.classList.remove("show");
-
-    }
-);
-
-
-/* =========================
-   LOVE TERBANG
-========================= */
+/* LOVE */
 
 function createHearts(jumlah) {
 
-    for (
-        let i = 0;
-        i < jumlah;
-        i++
-    ) {
+    for (let i = 0; i < jumlah; i++) {
 
         const heart =
             document.createElement("div");
@@ -117,40 +104,41 @@ function createHearts(jumlah) {
         heart.className =
             "floating-heart";
 
+        const jenisLove = [
+            "❤️",
+            "💕",
+            "💗",
+            "💖"
+        ];
+
         heart.innerHTML =
-            ["❤️", "💕", "💗", "💖"][
+            jenisLove[
                 Math.floor(
-                    Math.random() * 4
+                    Math.random() *
+                    jenisLove.length
                 )
             ];
-
 
         heart.style.left =
             Math.random() * 100 + "%";
 
-
         heart.style.bottom =
-            Math.random() * 40 + "%";
-
+            Math.random() * 35 + "%";
 
         heart.style.animationDelay =
-            Math.random() * .8 + "s";
-
+            Math.random() * .7 + "s";
 
         heart.style.fontSize =
             15 +
             Math.random() * 25 +
             "px";
 
-
         document.body.appendChild(heart);
-
 
         setTimeout(function () {
 
             heart.remove();
 
-        }, 3000);
-
+        }, 3200);
     }
 }
