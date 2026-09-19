@@ -1,20 +1,20 @@
 const heartButton =
     document.getElementById("heartButton");
 
-const garden =
-    document.getElementById("garden");
+const groundFlowers =
+    document.getElementById("groundFlowers");
 
-const envelopeArea =
-    document.getElementById("envelopeArea");
+const envelopeSection =
+    document.getElementById("envelopeSection");
 
 const envelope =
     document.getElementById("envelope");
 
-const letterScreen =
-    document.getElementById("letterScreen");
+const letterOverlay =
+    document.getElementById("letterOverlay");
 
 const closeButton =
-    document.getElementById("close");
+    document.getElementById("closeButton");
 
 const surpriseButton =
     document.getElementById("surpriseButton");
@@ -22,123 +22,196 @@ const surpriseButton =
 const bouquet =
     document.getElementById("bouquet");
 
-const gabriela =
-    document.getElementById("gabriela");
+const name =
+    document.getElementById("name");
 
 
-/* KLIK HATI */
+/* =========================
+   KLIK HATI
+========================= */
 
-heartButton.addEventListener("click", function () {
+heartButton.addEventListener(
+    "click",
+    function () {
 
-    garden.classList.add("show");
+        /* bunga bawah muncul */
+        groundFlowers.classList.add("show");
 
-    createHearts(15);
+        /* love */
+        createHearts(15);
 
-    heartButton.style.transform =
-        "scale(0)";
+        /* hati menghilang */
+        heartButton.style.transform =
+            "scale(0)";
 
-    heartButton.style.opacity =
-        "0";
-
-    setTimeout(function () {
-
-        envelopeArea.classList.add("show");
-
-    }, 1800);
-});
-
-
-/* KLIK AMPLOP */
-
-envelope.addEventListener("click", function () {
-
-    letterScreen.classList.add("show");
-
-    createHearts(20);
-});
+        heartButton.style.opacity =
+            "0";
 
 
-/* KLIK KEJUTAN */
+        /* amplop muncul */
+        setTimeout(
+            function () {
 
-surpriseButton.addEventListener("click", function () {
+                envelopeSection.classList.add(
+                    "show"
+                );
 
-    /* tombol dikunci supaya tidak diklik berkali-kali */
-    surpriseButton.disabled = true;
+            },
+            1500
+        );
 
-    surpriseButton.innerHTML =
-        "💐 Untuk Gabriela...";
-
-    /* munculkan buket */
-    bouquet.classList.add("show");
-
-    /* love bertebaran */
-    createHearts(35);
-
-    /* nama muncul setelah bunga mekar */
-    setTimeout(function () {
-
-        gabriela.classList.add("show");
-
-    }, 1800);
-});
+    }
+);
 
 
-/* TUTUP SURAT */
+/* =========================
+   KLIK AMPLOP
+========================= */
 
-closeButton.addEventListener("click", function () {
+envelope.addEventListener(
+    "click",
+    function () {
 
-    letterScreen.classList.remove("show");
+        letterOverlay.classList.add(
+            "show"
+        );
 
-});
+        createHearts(20);
+
+    }
+);
 
 
-/* LOVE */
+/* =========================
+   KLIK KEJUTAN
+========================= */
+
+surpriseButton.addEventListener(
+    "click",
+    function () {
+
+        /* cegah klik berulang */
+        surpriseButton.disabled = true;
+
+        surpriseButton.textContent =
+            "💐 Untuk Gabriela...";
+
+
+        /* buket muncul */
+        bouquet.classList.add(
+            "show"
+        );
+
+
+        /* love */
+        createHearts(35);
+
+
+        /* nama muncul setelah bunga */
+        setTimeout(
+            function () {
+
+                name.classList.add(
+                    "show"
+                );
+
+            },
+            1800
+        );
+
+    }
+);
+
+
+/* =========================
+   TUTUP SURAT
+========================= */
+
+closeButton.addEventListener(
+    "click",
+    function () {
+
+        letterOverlay.classList.remove(
+            "show"
+        );
+
+    }
+);
+
+
+/* =========================
+   LOVE
+========================= */
 
 function createHearts(jumlah) {
 
-    for (let i = 0; i < jumlah; i++) {
+    const love = [
+        "❤️",
+        "💕",
+        "💗",
+        "💖"
+    ];
+
+
+    for (
+        let i = 0;
+        i < jumlah;
+        i++
+    ) {
 
         const heart =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
+
 
         heart.className =
             "floating-heart";
 
-        const jenisLove = [
-            "❤️",
-            "💕",
-            "💗",
-            "💖"
-        ];
 
-        heart.innerHTML =
-            jenisLove[
+        heart.textContent =
+            love[
                 Math.floor(
                     Math.random() *
-                    jenisLove.length
+                    love.length
                 )
             ];
+
 
         heart.style.left =
             Math.random() * 100 + "%";
 
+
         heart.style.bottom =
             Math.random() * 35 + "%";
 
-        heart.style.animationDelay =
-            Math.random() * .7 + "s";
 
         heart.style.fontSize =
-            15 +
-            Math.random() * 25 +
-            "px";
+            (
+                16 +
+                Math.random() * 25
+            ) + "px";
 
-        document.body.appendChild(heart);
 
-        setTimeout(function () {
+        heart.style.animationDelay =
+            (
+                Math.random() * .8
+            ) + "s";
 
-            heart.remove();
 
-        }, 3200);
+        document.body.appendChild(
+            heart
+        );
+
+
+        setTimeout(
+            function () {
+
+                heart.remove();
+
+            },
+            3200
+        );
+
     }
 }
