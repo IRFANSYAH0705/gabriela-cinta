@@ -1,217 +1,232 @@
-const heartButton =
-    document.getElementById("heartButton");
+document.addEventListener("DOMContentLoaded", function () {
 
-const groundFlowers =
-    document.getElementById("groundFlowers");
+    const heartButton =
+        document.getElementById("heartButton");
 
-const envelopeSection =
-    document.getElementById("envelopeSection");
+    const bottomFlowers =
+        document.getElementById("bottomFlowers");
 
-const envelope =
-    document.getElementById("envelope");
+    const envelopeBox =
+        document.getElementById("envelopeBox");
 
-const letterOverlay =
-    document.getElementById("letterOverlay");
+    const envelope =
+        document.getElementById("envelope");
 
-const closeButton =
-    document.getElementById("closeButton");
+    const letterOverlay =
+        document.getElementById("letterOverlay");
 
-const surpriseButton =
-    document.getElementById("surpriseButton");
+    const closeButton =
+        document.getElementById("closeButton");
 
-const bouquet =
-    document.getElementById("bouquet");
+    const surpriseButton =
+        document.getElementById("surpriseButton");
 
-const name =
-    document.getElementById("name");
+    const bouquet =
+        document.getElementById("bouquet");
 
-
-/* =========================
-   KLIK HATI
-========================= */
-
-heartButton.addEventListener(
-    "click",
-    function () {
-
-        /* bunga bawah muncul */
-        groundFlowers.classList.add("show");
-
-        /* love */
-        createHearts(15);
-
-        /* hati menghilang */
-        heartButton.style.transform =
-            "scale(0)";
-
-        heartButton.style.opacity =
-            "0";
+    const gabriela =
+        document.getElementById("gabriela");
 
 
-        /* amplop muncul */
-        setTimeout(
-            function () {
+    /* =========================
+       KLIK HATI
+    ========================= */
 
-                envelopeSection.classList.add(
-                    "show"
-                );
+    heartButton.addEventListener(
+        "click",
+        function () {
 
-            },
-            1500
-        );
-
-    }
-);
-
-
-/* =========================
-   KLIK AMPLOP
-========================= */
-
-envelope.addEventListener(
-    "click",
-    function () {
-
-        letterOverlay.classList.add(
-            "show"
-        );
-
-        createHearts(20);
-
-    }
-);
-
-
-/* =========================
-   KLIK KEJUTAN
-========================= */
-
-surpriseButton.addEventListener(
-    "click",
-    function () {
-
-        /* cegah klik berulang */
-        surpriseButton.disabled = true;
-
-        surpriseButton.textContent =
-            "💐 Untuk Gabriela...";
-
-
-        /* buket muncul */
-        bouquet.classList.add(
-            "show"
-        );
-
-
-        /* love */
-        createHearts(35);
-
-
-        /* nama muncul setelah bunga */
-        setTimeout(
-            function () {
-
-                name.classList.add(
-                    "show"
-                );
-
-            },
-            1800
-        );
-
-    }
-);
-
-
-/* =========================
-   TUTUP SURAT
-========================= */
-
-closeButton.addEventListener(
-    "click",
-    function () {
-
-        letterOverlay.classList.remove(
-            "show"
-        );
-
-    }
-);
-
-
-/* =========================
-   LOVE
-========================= */
-
-function createHearts(jumlah) {
-
-    const love = [
-        "❤️",
-        "💕",
-        "💗",
-        "💖"
-    ];
-
-
-    for (
-        let i = 0;
-        i < jumlah;
-        i++
-    ) {
-
-        const heart =
-            document.createElement(
-                "div"
+            /* bunga muncul */
+            bottomFlowers.classList.add(
+                "show"
             );
 
 
-        heart.className =
-            "floating-heart";
+            /* love */
+            createHearts(20);
 
 
-        heart.textContent =
-            love[
-                Math.floor(
-                    Math.random() *
-                    love.length
-                )
-            ];
+            /* hati mengecil */
+            heartButton.style.transform =
+                "scale(0)";
+
+            heartButton.style.opacity =
+                "0";
 
 
-        heart.style.left =
-            Math.random() * 100 + "%";
+            /* amplop muncul */
+            setTimeout(
+                function () {
+
+                    envelopeBox.classList.add(
+                        "show"
+                    );
+
+                },
+                1500
+            );
+
+        }
+    );
 
 
-        heart.style.bottom =
-            Math.random() * 35 + "%";
+    /* =========================
+       KLIK AMPLOP
+    ========================= */
+
+    envelope.addEventListener(
+        "click",
+        function () {
+
+            letterOverlay.classList.add(
+                "show"
+            );
 
 
-        heart.style.fontSize =
-            (
-                16 +
-                Math.random() * 25
-            ) + "px";
+            createHearts(25);
+
+        }
+    );
 
 
-        heart.style.animationDelay =
-            (
-                Math.random() * .8
-            ) + "s";
+    /* =========================
+       KLIK KEJUTAN
+    ========================= */
+
+    surpriseButton.addEventListener(
+        "click",
+        function () {
+
+            /* tombol hanya bisa sekali */
+            surpriseButton.disabled =
+                true;
 
 
-        document.body.appendChild(
-            heart
-        );
+            surpriseButton.textContent =
+                "💐 Untuk Gabriela...";
 
 
-        setTimeout(
-            function () {
+            /* buket muncul */
+            bouquet.classList.add(
+                "show"
+            );
 
-                heart.remove();
 
-            },
-            3200
-        );
+            /* love */
+            createHearts(40);
 
+
+            /* nama muncul */
+            setTimeout(
+                function () {
+
+                    gabriela.classList.add(
+                        "show"
+                    );
+
+                },
+                1900
+            );
+
+        }
+    );
+
+
+    /* =========================
+       TUTUP SURAT
+    ========================= */
+
+    closeButton.addEventListener(
+        "click",
+        function () {
+
+            letterOverlay.classList.remove(
+                "show"
+            );
+
+        }
+    );
+
+
+    /* =========================
+       LOVE
+    ========================= */
+
+    function createHearts(jumlah) {
+
+        const hearts = [
+            "❤️",
+            "💕",
+            "💗",
+            "💖"
+        ];
+
+
+        for (
+            let i = 0;
+            i < jumlah;
+            i++
+        ) {
+
+            const heart =
+                document.createElement(
+                    "div"
+                );
+
+
+            heart.className =
+                "floating-heart";
+
+
+            heart.textContent =
+                hearts[
+                    Math.floor(
+                        Math.random() *
+                        hearts.length
+                    )
+                ];
+
+
+            heart.style.left =
+                Math.random() * 100 +
+                "%";
+
+
+            heart.style.bottom =
+                Math.random() * 35 +
+                "%";
+
+
+            heart.style.fontSize =
+                (
+                    16 +
+                    Math.random() * 25
+                ) +
+                "px";
+
+
+            heart.style.animationDelay =
+                (
+                    Math.random() * .7
+                ) +
+                "s";
+
+
+            document.body.appendChild(
+                heart
+            );
+
+
+            setTimeout(
+                function () {
+
+                    heart.remove();
+
+                },
+                3200
+            );
+
+        }
     }
-}
+
+});
